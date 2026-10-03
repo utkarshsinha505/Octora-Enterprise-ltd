@@ -14,6 +14,7 @@
  */
 import type {
   Audience,
+  Capability,
   ClientLogo,
   Faq,
   Service,
@@ -639,34 +640,88 @@ export const culture = {
   ],
 };
 
-// PLACEHOLDER co-founders: replace names, roles, bios, highlights and photos with the real co-founders.
-// Both are featured on the home page and at the top of /about/leadership.
+// Co-founders: featured on the home page and at the top of /about/leadership.
+// The second entry is a PLACEHOLDER: replace its name, role, bio, highlights, photo and link.
 export const cofounders: TeamMember[] = [
   {
-    name: "[Co-founder Name]",
-    role: "Co-founder & Creative Director",
-    bio: "A filmmaker turned AI artist who co-founded UPÉ to give every brand access to cinematic storytelling. Leads creative direction on every major project.",
-    photo: { src: "/media/team/co-founder-1.webp", alt: "Portrait of UPÉ's co-founder and creative director" },
-    highlights: [
-      "120+ AI productions directed",
-      "Background in film direction and editing",
-      "Speaker on generative AI in advertising",
+    name: "Pratham Srivastava",
+    role: "Co-founder & Head of AI Media Generation",
+    bio: "As co-founder of UPÉ Synthetic Limited, Pratham leads the company's creative and technical vision. With a specialized focus on commercial ad films and high-fidelity audio production, he bridges the gap between traditional filmmaking and cutting-edge synthetic media.",
+    photo: {
+      src: "/media/team/pratham-srivastava.webp",
+      alt: "Portrait of Pratham Srivastava, co-founder of UPÉ Synthetic Limited",
+    },
+    expertise: [
+      {
+        title: "Advanced AI Generation",
+        description:
+          "Directing the creation of photorealistic visuals and dynamic media assets using state-of-the-art AI models.",
+      },
+      {
+        title: "A/V Synchronization",
+        description:
+          "Pioneering seamless, frame-perfect synchronization of generated audio and video to ensure natural, broadcast-ready output.",
+      },
+      {
+        title: "Commercial Ad Films",
+        description: "Crafting compelling, AI-enhanced advertising campaigns tailored for modern brands.",
+      },
+      {
+        title: "Specialized Audio Engineering",
+        description: "Overseeing the production of crisp, high-impact audio tracks that elevate visual narratives.",
+      },
     ],
-    links: [{ label: "LinkedIn", href: "https://linkedin.com/" }],
+    email: "pratham.srivastava2918@gmail.com",
+    links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/pratham-srivastava-80a145369" }],
   },
   {
     name: "[Co-founder Name]",
     role: "Co-founder & Managing Director",
-    bio: "Runs strategy, client partnerships and operations, making sure every project is scoped clearly, delivered on time and built to grow the client's business.",
+    bio: "Runs strategy, client partnerships and operations, making sure every engagement is scoped clearly and every client relationship keeps growing.",
     photo: { src: "/media/team/co-founder-2.webp", alt: "Portrait of UPÉ's co-founder and managing director" },
     highlights: [
       "Leads client strategy and partnerships",
-      "Oversees production pipelines and delivery",
-      "Mentors students in AI filmmaking",
+      "Runs operations, finance and hiring",
+      "Grows partnerships with brands, studios and schools",
     ],
     links: [{ label: "LinkedIn", href: "https://linkedin.com/" }],
   },
 ];
+
+// Leadership page (/about/leadership) copy. The page also shows `cofounders` and the core `team`.
+export const leadership = {
+  intro:
+    "At UPÉ Synthetic Limited, we are pioneering the next frontier of digital media. By merging human creativity with advanced artificial intelligence, our leadership team drives innovation in synthetic media generation, delivering hyper-realistic audio, video and advertising solutions for a rapidly evolving digital landscape.",
+  creativeTeam: {
+    title: "The UPÉ Synthetic Creative Team",
+    intro:
+      "Under Pratham's leadership, our specialized team of AI technicians, prompt engineers and media producers executes complex synthetic media projects from concept to final render.",
+    capabilities: [
+      {
+        title: "AI Music Video Production",
+        description:
+          "We generate entirely synthetic, visually stunning music videos, matching complex auditory beats with dynamic, AI-rendered visual storytelling.",
+        icon: "music",
+      },
+      {
+        title: "Custom AI Voiceovers",
+        description:
+          "Our team produces studio-quality, highly emotive AI voiceovers across multiple languages and tonal styles, ideal for commercials, narration and localized dubbing.",
+        icon: "mic",
+      },
+      {
+        title: "Rapid Prototyping & Scaling",
+        description:
+          "Leveraging AI workflows to deliver high-volume, premium media assets faster than traditional production pipelines.",
+        icon: "bolt",
+      },
+    ] satisfies Capability[],
+  },
+  workWithUs: {
+    title: "Work with us",
+    text: "Ready to redefine how your brand creates media? Reach out to discuss custom AI generation and production partnerships.",
+  },
+};
 
 // PLACEHOLDER core team: replace names, bios and photos with your real team.
 export const team: TeamMember[] = [

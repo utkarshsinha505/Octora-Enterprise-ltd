@@ -83,8 +83,19 @@ export type TeamMember = {
   role: string;
   bio: string;
   photo: Media;
+  /** Short points shown on cards (used when `expertise` is not set) */
   highlights?: string[];
+  /** Detailed expertise: titles appear on the home page card, full entries on the Leadership page */
+  expertise?: { title: string; description: string }[];
+  /** Public contact email, shown on the Leadership page */
+  email?: string;
   links?: { label: string; href: string }[];
+};
+
+export type Capability = {
+  title: string;
+  description: string;
+  icon: "music" | "mic" | "bolt";
 };
 
 export type Faq = {

@@ -37,6 +37,7 @@ Requires Node.js 20.9 or newer.
 | Our Story, mission, vision, timeline | `story`, `timeline` |
 | Values and culture | `values`, `culture` |
 | Co-founders (featured on the home page and at the top of the Leadership page) | `cofounders` |
+| Leadership page intro, creative-team capabilities, "Work with us" text | `leadership` |
 | Core team (Leadership page) | `team` |
 | Contact page title and budget ranges | `contactPage` |
 
@@ -50,7 +51,8 @@ Everything marked **PLACEHOLDER** in `data/site.ts`, and anything in `[square br
 - [ ] `stats`: your real numbers
 - [ ] `testimonials`: real, attributable quotes (the current ones are illustrative)
 - [ ] `work`: Truth Lens and Lotus Avio are real projects; the other six case studies are fictional examples. Replace them with real projects.
-- [ ] `cofounders` and `team`: real names, roles, bios and photos (co-founder portraits are in `public/media/team/co-founder-*.webp`)
+- [ ] `cofounders`: Pratham Srivastava is real; the second co-founder is a placeholder (name, role, bio, highlights, photo `public/media/team/co-founder-2.webp` and LinkedIn link). Co-founders with real names are added to the site's structured data automatically.
+- [ ] `team`: real names, bios and photos for the core team
 - [ ] `contactPage.budgetRanges`: currency and ranges for your market
 - [ ] Placeholder images in `public/media/` (see below)
 

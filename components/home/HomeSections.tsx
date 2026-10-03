@@ -187,37 +187,40 @@ export function TeamSpotlight() {
       }
     >
       <ul className="grid gap-6 lg:grid-cols-2">
-        {cofounders.map((person, i) => (
-          <Reveal as="li" key={person.role} delay={i * 0.1} className="flex">
-            {/* grid areas: portrait beside name on phones, beside name + bio from sm up */}
-            <article className="group glow-border relative grid w-full grid-cols-[6rem_1fr] gap-x-5 gap-y-5 rounded-[2rem] glass p-6 [grid-template-areas:'photo_head'_'bio_bio'_'list_list'] sm:grid-cols-[10rem_1fr] sm:gap-x-7 sm:[grid-template-areas:'photo_head'_'photo_bio'_'list_list'] md:p-8">
-              <div className="relative aspect-[4/5] self-start overflow-hidden rounded-2xl border border-line [grid-area:photo]">
-                <Image
-                  src={person.photo.src}
-                  alt={person.photo.alt}
-                  fill
-                  sizes="(min-width: 640px) 10rem, 6rem"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </div>
-              <div className="self-end [grid-area:head] sm:self-start">
-                <h3 className="text-2xl font-bold md:text-3xl">{person.name}</h3>
-                <p className="mt-1 font-semibold text-gradient">{person.role}</p>
-              </div>
-              <p className="text-muted [grid-area:bio]">{person.bio}</p>
-              {person.highlights && (
-                <ul className="grid gap-2.5 border-t border-line pt-5 text-sm [grid-area:list]">
-                  {person.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-3">
-                      <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </article>
-          </Reveal>
-        ))}
+        {cofounders.map((person, i) => {
+          const points = person.expertise?.map((e) => e.title) ?? person.highlights;
+          return (
+            <Reveal as="li" key={person.role} delay={i * 0.1} className="flex">
+              {/* grid areas: portrait beside name on phones, beside name + bio from sm up */}
+              <article className="group glow-border relative grid w-full grid-cols-[6rem_minmax(0,1fr)] grid-rows-[auto_1fr_auto] gap-x-5 gap-y-5 rounded-[2rem] glass p-6 [grid-template-areas:'photo_head'_'bio_bio'_'list_list'] sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-7 sm:[grid-template-areas:'photo_head'_'photo_bio'_'list_list'] md:p-8 lg:grid-cols-[7rem_minmax(0,1fr)] xl:grid-cols-[10rem_minmax(0,1fr)]">
+                <div className="relative aspect-[4/5] self-start overflow-hidden rounded-2xl border border-line [grid-area:photo]">
+                  <Image
+                    src={person.photo.src}
+                    alt={person.photo.alt}
+                    fill
+                    sizes="(min-width: 1280px) 10rem, (min-width: 1024px) 7rem, (min-width: 640px) 10rem, 6rem"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                </div>
+                <div className="self-end [grid-area:head] sm:self-start">
+                  <h3 className="text-xl font-bold [overflow-wrap:anywhere] sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">{person.name}</h3>
+                  <p className="mt-1 font-semibold text-gradient">{person.role}</p>
+                </div>
+                <p className="text-muted [grid-area:bio]">{person.bio}</p>
+                {points && (
+                  <ul className="grid content-start gap-2.5 border-t border-line pt-5 text-sm [grid-area:list]">
+                    {points.map((h) => (
+                      <li key={h} className="flex items-start gap-3">
+                        <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </article>
+            </Reveal>
+          );
+        })}
       </ul>
     </Section>
   );
