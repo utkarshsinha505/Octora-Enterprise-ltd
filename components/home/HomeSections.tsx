@@ -190,9 +190,9 @@ export function TeamSpotlight() {
         {cofounders.map((person, i) => {
           const points = person.expertise?.map((e) => e.title) ?? person.highlights;
           return (
-            <Reveal as="li" key={person.role} delay={i * 0.1} className="flex">
+            <Reveal as="li" key={person.role} delay={i * 0.1} className="flex lg:row-span-3 lg:grid lg:grid-rows-subgrid">
               {/* grid areas: portrait beside name on phones, beside name + bio from sm up */}
-              <article className="group glow-border relative grid w-full grid-cols-[6rem_minmax(0,1fr)] grid-rows-[auto_1fr_auto] gap-x-5 gap-y-5 rounded-[2rem] glass p-6 [grid-template-areas:'photo_head'_'bio_bio'_'list_list'] sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-7 sm:[grid-template-areas:'photo_head'_'photo_bio'_'list_list'] md:p-8 lg:grid-cols-[7rem_minmax(0,1fr)] xl:grid-cols-[10rem_minmax(0,1fr)]">
+              <article className="group glow-border relative grid w-full grid-cols-[6rem_minmax(0,1fr)] grid-rows-[auto_1fr_auto] gap-x-5 gap-y-5 rounded-[2rem] glass p-6 [grid-template-areas:'photo_head'_'bio_bio'_'list_list'] sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-7 sm:[grid-template-areas:'photo_head'_'photo_bio'_'list_list'] md:p-8 lg:row-span-3 lg:grid-cols-[7rem_minmax(0,1fr)] lg:grid-rows-subgrid xl:grid-cols-[10rem_minmax(0,1fr)]">
                 <div className="relative aspect-[4/5] self-start overflow-hidden rounded-2xl border border-line [grid-area:photo]">
                   <Image
                     src={person.photo.src}
@@ -204,7 +204,7 @@ export function TeamSpotlight() {
                 </div>
                 <div className="self-end [grid-area:head] sm:self-start">
                   <h3 className="text-xl font-bold [overflow-wrap:anywhere] sm:text-2xl md:text-3xl lg:text-2xl xl:text-3xl">{person.name}</h3>
-                  <p className="mt-1 font-semibold text-gradient">{person.role}</p>
+                  <p className="mt-1 font-semibold text-balance text-gradient">{person.role}</p>
                 </div>
                 <p className="text-muted [grid-area:bio]">{person.bio}</p>
                 {points && (
@@ -262,7 +262,7 @@ export function FinalCta() {
             <h2 id="cta-title" className="mx-auto max-w-3xl text-4xl font-bold md:text-6xl">
               {finalCta.title}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-lg text-muted">{finalCta.text}</p>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-fg/80">{finalCta.text}</p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <ButtonLink href="/contact" size="lg">
                 Let&apos;s talk <Icon name="arrowRight" size={18} />

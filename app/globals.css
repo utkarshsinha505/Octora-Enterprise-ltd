@@ -21,6 +21,7 @@
   --glow-opacity: 0.55;
   --grain-opacity: 0.06;
   --logo-filter: none;
+  --focus-ring: var(--cyan);
 }
 
 :root[data-theme="light"] {
@@ -37,6 +38,8 @@
   --glow-opacity: 0.3;
   --grain-opacity: 0.035;
   --logo-filter: invert(1);
+  /* cyan is too faint on light backgrounds; violet-700 keeps the focus ring above 3:1 */
+  --focus-ring: #6d28d9;
 }
 
 @theme inline {
@@ -96,7 +99,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--cyan);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -118,6 +121,9 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* room for glyph overhang (tight tracking / italics) without shifting layout */
+  padding-inline-end: 0.05em;
+  margin-inline-end: -0.05em;
 }
 
 @utility bg-accent {

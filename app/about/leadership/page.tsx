@@ -57,7 +57,7 @@ export default function LeadershipPage() {
                   <Image src={person.photo.src} alt={person.photo.alt} fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover" />
                 </div>
                 <div className="lg:col-span-7">
-                  <p className="text-sm font-semibold text-gradient">{person.role}</p>
+                  <p className="text-sm font-semibold text-balance text-gradient">{person.role}</p>
                   <h3 className="mt-2 text-2xl font-bold [overflow-wrap:anywhere] md:text-4xl">{person.name}</h3>
                   <p className="mt-6 text-lg text-muted">{person.bio}</p>
 
@@ -123,9 +123,9 @@ export default function LeadershipPage() {
             <h2 id="creative-team-title" className="text-3xl font-bold sm:text-4xl md:text-5xl">
               {creativeTeam.title}
             </h2>
-            <p className="mt-5 text-lg text-muted">{creativeTeam.intro}</p>
+            <p className="mt-5 max-w-2xl text-lg text-muted">{creativeTeam.intro}</p>
           </Reveal>
-          <ul className="mt-10 grid gap-5 md:grid-cols-3">
+          <ul className="mt-10 grid gap-5 lg:grid-cols-3">
             {creativeTeam.capabilities.map((c, i) => (
               <Reveal as="li" key={c.title} delay={i * 0.08} className="glow-border relative rounded-3xl glass p-7">
                 <span className="grid size-12 place-items-center rounded-2xl bg-accent text-[#07070c]">
@@ -173,7 +173,7 @@ export default function LeadershipPage() {
               <h2 id="work-with-us-title" className="mx-auto max-w-3xl text-4xl font-bold md:text-6xl">
                 {workWithUs.title}
               </h2>
-              <p className="mx-auto mt-6 max-w-xl text-lg text-muted">{workWithUs.text}</p>
+              <p className="mx-auto mt-6 max-w-xl text-lg text-fg/80">{workWithUs.text}</p>
               <div className="mt-10 flex flex-wrap justify-center gap-3">
                 {contact?.email && (
                   <a href={`mailto:${contact.email}`} className={buttonClasses("primary", "lg")}>
@@ -193,8 +193,12 @@ export default function LeadershipPage() {
               {contact?.email && (
                 <p className="mt-6 text-sm text-muted">
                   Or write to{" "}
-                  <a href={`mailto:${contact.email}`} className="font-semibold break-all text-fg underline-offset-4 hover:underline">
-                    {contact.email}
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="inline-block font-semibold [overflow-wrap:anywhere] text-fg underline-offset-4 hover:underline"
+                  >
+                    {contact.email.split("@")[0]}
+                    <wbr />@{contact.email.split("@")[1]}
                   </a>
                 </p>
               )}

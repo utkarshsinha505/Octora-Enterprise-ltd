@@ -646,7 +646,7 @@ export const cofounders: TeamMember[] = [
   {
     name: "Pratham Srivastava",
     role: "Co-founder & Head of AI Media Generation",
-    bio: "As co-founder of UPÉ Synthetic Limited, Pratham leads the company's creative and technical vision. With a specialized focus on commercial ad films and high-fidelity audio production, he bridges the gap between traditional filmmaking and cutting-edge synthetic media.",
+    bio: "As the co-founder of UPÉ Synthetic Limited, Pratham Srivastava leads the company's creative and technical vision. With a specialized focus on commercial ad films and high-fidelity audio production, he bridges the gap between traditional filmmaking and cutting-edge synthetic media.",
     photo: {
       src: "/media/team/pratham-srivastava.webp",
       alt: "Portrait of Pratham Srivastava, co-founder of UPÉ Synthetic Limited",

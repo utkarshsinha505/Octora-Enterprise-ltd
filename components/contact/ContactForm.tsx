@@ -16,7 +16,7 @@ type Status = { state: "idle" | "sending" | "success" | "error"; message?: strin
 const serviceOptions = [...services.map((s) => s.title), "Something else"];
 
 const inputClass =
-  "w-full rounded-2xl border border-line bg-surface px-4 py-3.5 text-fg placeholder:text-muted/70 transition-colors outline-none focus:border-violet focus-visible:outline-none focus:ring-2 focus:ring-violet/40 aria-[invalid=true]:border-red-400";
+  "w-full rounded-2xl border border-line bg-surface px-4 py-3.5 text-fg placeholder:text-muted/70 transition-colors outline-hidden focus:border-violet focus:ring-2 focus:ring-violet/40 aria-[invalid=true]:border-red-400";
 
 function FieldWrap({ id, label, error, optional, children }: { id: Field; label: string; error?: string; optional?: boolean; children: ReactNode }) {
   return (
