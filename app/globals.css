@@ -1,0 +1,278 @@
+@import "tailwindcss";
+
+/* Light mode is opt-in via the theme toggle (sets data-theme="light" on <html>). */
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+/* ─────────────── Design tokens ─────────────── */
+:root {
+  color-scheme: dark;
+  --bg: #07070c;
+  --bg-elevated: #0e0e17;
+  --fg: #f4f4f8;
+  --muted: #a3a3b8;
+  --line: rgb(255 255 255 / 0.1);
+  --surface: rgb(255 255 255 / 0.04);
+  --surface-strong: rgb(255 255 255 / 0.08);
+  --violet: #8b5cf6;
+  --cyan: #22d3ee;
+  /* gradient text needs darker stops in light mode for contrast */
+  --grad-text-from: #a78bfa;
+  --grad-text-to: #67e8f9;
+  --glow-opacity: 0.55;
+  --grain-opacity: 0.06;
+  --logo-filter: none;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f6fb;
+  --bg-elevated: #ffffff;
+  --fg: #0b0b16;
+  --muted: #4a4a60;
+  --line: rgb(11 11 22 / 0.1);
+  --surface: rgb(255 255 255 / 0.7);
+  --surface-strong: rgb(255 255 255 / 0.95);
+  --grad-text-from: #6d28d9;
+  --grad-text-to: #0e7490;
+  --glow-opacity: 0.3;
+  --grain-opacity: 0.035;
+  --logo-filter: invert(1);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-violet: var(--violet);
+  --color-cyan: var(--cyan);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-unbounded), var(--font-inter), ui-sans-serif, sans-serif;
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+/* ─────────────── Base ─────────────── */
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* subtle film grain over everything */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+h1, h2 {
+  text-wrap: balance;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--violet) 45%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ─────────────── Utilities ─────────────── */
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(100deg, var(--grad-text-from), var(--grad-text-to));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility bg-accent {
+  background-image: linear-gradient(110deg, #8b5cf6 0%, #6366f1 45%, #22d3ee 100%);
+}
+
+/* translucent card; no backdrop-filter here (costly on low-end phones). Add backdrop-blur-* where content sits over imagery. */
+@utility glass {
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+/* gradient border that glows on hover; pair with `relative` */
+@utility glow-border {
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(130deg, rgb(139 92 246 / 0.7), transparent 40%, transparent 60%, rgb(34 211 238 / 0.7));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+  &:hover::before,
+  &:focus-within::before {
+    opacity: 1;
+  }
+}
+
+/* skip layout/paint of off-screen sections until they approach the viewport */
+@utility cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+@utility logo-invert {
+  filter: var(--logo-filter);
+}
+
+/* soft ambient glows: radial gradients are far cheaper to paint than large blur() filters */
+@utility glow-violet {
+  background-image: radial-gradient(closest-side, rgb(139 92 246 / 0.9), rgb(139 92 246 / 0.3) 50%, transparent);
+}
+@utility glow-cyan {
+  background-image: radial-gradient(closest-side, rgb(34 211 238 / 0.85), rgb(34 211 238 / 0.25) 50%, transparent);
+}
+
+/* ─────────────── Animations ─────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/*
+ * Reality → synthetic hero morph. A window slides in from the right while its content
+ * slides the opposite way, so the synthetic frame is revealed in place.
+ * Transform-only, so it runs on the compositor without repainting.
+ */
+@keyframes morph-window {
+  0%, 12% { transform: translateX(100%); }
+  45%, 62% { transform: translateX(0); }
+  95%, 100% { transform: translateX(100%); }
+}
+@keyframes morph-counter {
+  0%, 12% { transform: translateX(-100%); }
+  45%, 62% { transform: translateX(0); }
+  95%, 100% { transform: translateX(-100%); }
+}
+@keyframes scan-line {
+  0%, 12% { transform: translateX(100%); opacity: 0; }
+  14% { opacity: 1; }
+  45% { transform: translateX(0%); opacity: 1; }
+  47%, 62% { transform: translateX(0%); opacity: 0; }
+  64% { opacity: 1; }
+  95% { transform: translateX(100%); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+/*
+ * Entrance for above-the-fold content. Transform only: no opacity fade (elements first painted at
+ * opacity 0 are ignored for LCP) and no filter (blur animations run on the main thread during load).
+ */
+@keyframes materialize {
+  from { transform: translateY(22px); }
+  to { transform: none; }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(3%, -4%, 0) scale(1.08); }
+}
+
+.morph-window,
+.morph-counter,
+.morph-scan {
+  animation: 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  /* start mid-wipe: both frames paint on the first frame (good for LCP) and the hero opens in motion */
+  animation-delay: -3s;
+}
+.morph-window { animation-name: morph-window; }
+.morph-counter { animation-name: morph-counter; }
+.morph-scan { animation-name: scan-line; }
+.materialize {
+  animation: materialize 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.glow-orb {
+  animation: drift 14s ease-in-out infinite;
+}
+
+/* scroll reveal (components/ui/Reveal.tsx); content is only hidden when JS is running */
+html[data-js] [data-reveal] {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0s);
+}
+html[data-js] [data-reveal]:not([data-revealed]) {
+  opacity: 0;
+  transform: translateY(24px);
+}
+@media (prefers-reduced-motion: reduce) {
+  html[data-js] [data-reveal]:not([data-revealed]) {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* user-controlled pause for looping decorative motion (WCAG 2.2.2), set by MotionToggle */
+[data-motion="paused"] :is(.morph-window, .morph-counter, .morph-scan, .marquee-track, .glow-orb) {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .materialize {
+    animation: none !important;
+  }
+  /* show a static half-and-half split instead of the loop */
+  .morph-window,
+  .morph-counter,
+  .morph-scan {
+    animation: none !important;
+  }
+  .morph-window { transform: translateX(50%); }
+  .morph-counter { transform: translateX(-50%); }
+  .morph-scan { transform: translateX(50%); opacity: 1; }
+  .marquee-track {
+    animation: none !important;
+  }
+}
