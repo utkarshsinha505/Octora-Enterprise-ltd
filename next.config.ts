@@ -15,10 +15,8 @@ const nextConfig: NextConfig = {
           { key: "X-Frame-Options", value: "SAMEORIGIN" },
         ],
       },
-      {
-        source: "/media/:path*",
-        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
-      },
+      // /media files keep Next's default caching: their names don't change when the content does,
+      // so a long "immutable" cache would keep serving old photos after a file is replaced.
     ];
   },
 };

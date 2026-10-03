@@ -51,7 +51,7 @@ Everything marked **PLACEHOLDER** in `data/site.ts`, and anything in `[square br
 - [ ] `stats`: your real numbers
 - [ ] `testimonials`: real, attributable quotes (the current ones are illustrative)
 - [ ] `work`: Truth Lens and Lotus Avio are real projects; the other six case studies are fictional examples. Replace them with real projects.
-- [ ] `cofounders`: Pratham Srivastava is real; the second co-founder is a placeholder (name, role, bio, highlights, photo `public/media/team/co-founder-2.webp` and LinkedIn link). Co-founders with real names are added to the site's structured data automatically.
+- [x] `cofounders`: Pratham Srivastava and Utkarsh Sinha are complete (photos in `public/media/team/`, 4:5 portraits). Co-founders are added to the site's structured data automatically.
 - [ ] `team`: real names, bios and photos for the core team
 - [ ] `contactPage.budgetRanges`: currency and ranges for your market
 - [ ] Placeholder images in `public/media/` (see below)
@@ -80,6 +80,10 @@ public/media/
 ```
 
 To swap an image, drop the new file in `public/media` and update its `src` (and `alt`) in `data/site.ts`. JPG, PNG, WebP and AVIF all work. `next/image` resizes them and serves modern formats automatically. Upload images at least 1600px wide for covers and 1200px for portraits.
+
+> **Replacing a photo?** Give the new file a new name (for example `jane-doe-v2.webp`) and update the `src`. Browsers and the image optimizer cache images by URL, so a file overwritten under the same name can keep showing the old version for a few hours.
+
+Changes only appear on the live site after they are committed and pushed to GitHub (Vercel redeploys automatically).
 
 - **Hero:** the hero shows a looping wipe from a real photo (`hero.realImage`) to its AI-styled version (`hero.syntheticImage`). Use two versions of the same shot for the best effect. To use a showreel instead, set `hero.video` to an `.mp4` path (keep it short, muted-friendly and under ~4 MB) and `hero.videoPoster` to a still frame.
 - **Logos:** the "Trusted by" strip expects light-coloured logos on a transparent background. They are inverted automatically in light mode.

@@ -519,13 +519,13 @@ export const work: WorkItem[] = [
     summary:
       "The primary digital hub and storefront for a Patna-based audio and visual production studio, kept secure and up to date by UPÉ.",
     cover: {
-      src: "/media/work/lotus-avio/cover.webp",
+      src: "/media/work/lotus-avio/cover-v2.webp",
       alt: "The Lotus Avio homepage: 'Sound and visuals that get your message heard', beside a photo of the recording studio",
     },
     challenge:
       "Lotus Avio needed one place to showcase a diverse range of capabilities, from voice-overs and audio engineering to comprehensive production work and AI voice datasets, with an experience that reflects the brand's creative vision and technical expertise, and that keeps pace with the company's growth.",
     approach: [
-      "Strategic build: architected from the ground up by the co-founder, blending technical execution with intimate brand knowledge.",
+      "Strategic build: architected from the ground up by Utkarsh Sinha, blending technical execution with intimate brand knowledge.",
       "Expert direction: developed under the guidance and strategic mentorship of Saket Sinha, shaping the site's structure, user interface and overall digital strategy.",
       "Brand alignment: a custom digital environment tailored to highlight professional media and production portfolios.",
       "Sustainable management: long-term technical upkeep, security and content updates handled exclusively by UPÉ Synthetic Limited.",
@@ -641,8 +641,26 @@ export const culture = {
 };
 
 // Co-founders: featured on the home page and at the top of /about/leadership.
-// The second entry is a PLACEHOLDER: replace its name, role, bio, highlights, photo and link.
 export const cofounders: TeamMember[] = [
+  {
+    name: "Utkarsh Sinha",
+    role: "Co-founder & CEO",
+    bio: "Co-founder and CEO of UPÉ Synthetic Limited, leading the company's vision, AI-driven product development, creative technology and synthetic media initiatives. He works at the intersection of artificial intelligence, storytelling, visual media and digital experiences.",
+    profile: [
+      "Utkarsh Sinha is the co-founder and Chief Executive Officer of UPÉ Synthetic Limited, a synthetic media and AI-driven creative technology company focused on transforming ideas into engaging digital experiences.",
+      "He leads the company's vision, product direction, creative strategy, technology initiatives and overall business development. His work focuses on combining artificial intelligence, storytelling, visual media and technology to create next-generation content and digital products.",
+      "At UPÉ Synthetic Limited, he works across AI-generated reels, original AI music, advertising films, digital storytelling, creative technology and web experiences, bridging creativity with emerging AI capabilities.",
+      "With a background in AI, machine learning, Python, software development and digital product creation, Utkarsh brings together technical thinking and creative execution to help shape the company's products, brand and long-term direction.",
+    ],
+    photo: { src: "/media/team/utkarsh-sinha-v2.webp", alt: "Portrait of Utkarsh Sinha, co-founder and CEO of UPÉ Synthetic Limited" },
+    highlights: [
+      "Leads vision, product direction and business development",
+      "Drives AI-driven products and creative technology",
+      "Background in AI, machine learning and software development",
+    ],
+    email: "utkarshsinha505@gmail.com",
+    links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/sinhautkarsh505/" }],
+  },
   {
     name: "Pratham Srivastava",
     role: "Co-founder & Head of AI Media Generation",
@@ -673,18 +691,6 @@ export const cofounders: TeamMember[] = [
     ],
     email: "pratham.srivastava2918@gmail.com",
     links: [{ label: "LinkedIn", href: "https://www.linkedin.com/in/pratham-srivastava-80a145369" }],
-  },
-  {
-    name: "[Co-founder Name]",
-    role: "Co-founder & Managing Director",
-    bio: "Runs strategy, client partnerships and operations, making sure every engagement is scoped clearly and every client relationship keeps growing.",
-    photo: { src: "/media/team/co-founder-2.webp", alt: "Portrait of UPÉ's co-founder and managing director" },
-    highlights: [
-      "Leads client strategy and partnerships",
-      "Runs operations, finance and hiring",
-      "Grows partnerships with brands, studios and schools",
-    ],
-    links: [{ label: "LinkedIn", href: "https://linkedin.com/" }],
   },
 ];
 
@@ -720,6 +726,8 @@ export const leadership = {
   workWithUs: {
     title: "Work with us",
     text: "Ready to redefine how your brand creates media? Reach out to discuss custom AI generation and production partnerships.",
+    /** Co-founder whose email and LinkedIn the buttons use (must match a name in `cofounders`) */
+    contactName: "Pratham Srivastava",
   },
 };
 

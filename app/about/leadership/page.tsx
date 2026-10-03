@@ -15,8 +15,9 @@ export const metadata = pageMetadata({
   path: "/about/leadership",
 });
 
-// the co-founder whose email powers the "Work with us" block
-const contact = cofounders.find((c) => c.email);
+// the co-founder whose email and LinkedIn power the "Work with us" block
+const contact =
+  cofounders.find((c) => c.email && c.name === leadership.workWithUs.contactName) ?? cofounders.find((c) => c.email);
 
 export default function LeadershipPage() {
   const { creativeTeam, workWithUs } = leadership;
@@ -59,7 +60,15 @@ export default function LeadershipPage() {
                 <div className="lg:col-span-7">
                   <p className="text-sm font-semibold text-balance text-gradient">{person.role}</p>
                   <h3 className="mt-2 text-2xl font-bold [overflow-wrap:anywhere] md:text-4xl">{person.name}</h3>
-                  <p className="mt-6 text-lg text-muted">{person.bio}</p>
+                  {person.profile ? (
+                    <div className="mt-6 space-y-4 text-lg text-muted">
+                      {person.profile.map((para) => (
+                        <p key={para}>{para}</p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="mt-6 text-lg text-muted">{person.bio}</p>
+                  )}
 
                   {person.expertise ? (
                     <>

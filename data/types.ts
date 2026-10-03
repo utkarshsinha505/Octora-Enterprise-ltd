@@ -82,6 +82,8 @@ export type TeamMember = {
   name: string;
   role: string;
   bio: string;
+  /** Optional longer profile (paragraphs) shown on the Leadership page instead of `bio` */
+  profile?: string[];
   photo: Media;
   /** Short points shown on cards (used when `expertise` is not set) */
   highlights?: string[];
