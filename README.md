@@ -36,7 +36,8 @@ Requires Node.js 20.9 or newer.
 | Case studies (Work grid and `/work/[slug]` pages) | `work` |
 | Our Story, mission, vision, timeline | `story`, `timeline` |
 | Values and culture | `values`, `culture` |
-| Team (the first person is featured as the founder) | `team` |
+| Co-founders (featured on the home page and at the top of the Leadership page) | `cofounders` |
+| Core team (Leadership page) | `team` |
 | Contact page title and budget ranges | `contactPage` |
 
 ### Before launch: replace the placeholders
@@ -48,8 +49,8 @@ Everything marked **PLACEHOLDER** in `data/site.ts`, and anything in `[square br
 - [ ] `clientLogos`: real client logos, used with permission
 - [ ] `stats`: your real numbers
 - [ ] `testimonials`: real, attributable quotes (the current ones are illustrative)
-- [ ] `work`: the eight case studies are fictional examples. Replace them with real projects.
-- [ ] `team`: real names, bios and photos
+- [ ] `work`: Truth Lens and Lotus Avio are real projects; the other six case studies are fictional examples. Replace them with real projects.
+- [ ] `cofounders` and `team`: real names, roles, bios and photos (co-founder portraits are in `public/media/team/co-founder-*.webp`)
 - [ ] `contactPage.budgetRanges`: currency and ranges for your market
 - [ ] Placeholder images in `public/media/` (see below)
 

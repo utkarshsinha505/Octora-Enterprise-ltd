@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Unbounded } from "next/font/google";
-import { site } from "@/data/site";
+import { cofounders, site } from "@/data/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
@@ -28,6 +28,9 @@ export const viewport: Viewport = {
   colorScheme: "dark light",
 };
 
+// only co-founders with real names (not [placeholders]) are published as structured data
+const namedCofounders = cofounders.filter((c) => !c.name.startsWith("["));
+
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -40,6 +43,9 @@ const organizationJsonLd = {
   telephone: site.contact.phone,
   address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: site.country },
   sameAs: site.social.map((s) => s.href),
+  ...(namedCofounders.length > 0 && {
+    founder: namedCofounders.map((c) => ({ "@type": "Person", name: c.name, jobTitle: c.role })),
+  }),
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

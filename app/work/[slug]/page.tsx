@@ -53,6 +53,12 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           <Eyebrow>{categoryLabel(item.category)} · {item.year}</Eyebrow>
           <h1 className="max-w-4xl text-4xl leading-[1.05] font-extrabold sm:text-5xl md:text-7xl">{item.title}</h1>
           <p className="mt-6 max-w-2xl text-lg text-muted md:text-xl">{item.summary}</p>
+          {item.liveUrl && (
+            <ButtonLink href={item.liveUrl} external className="mt-8">
+              Visit live site <Icon name="arrowUpRight" size={18} />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </ButtonLink>
+          )}
         </div>
         <div className="container-x relative mt-12">
           <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-line md:aspect-[16/8]">
@@ -80,6 +86,17 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Year</dt>
                 <dd className="mt-1 font-semibold">{item.year}</dd>
               </div>
+              {item.liveUrl && (
+                <div className="col-span-2 lg:col-span-1">
+                  <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Live site</dt>
+                  <dd className="mt-1 font-semibold">
+                    <a href={item.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 break-all hover:text-cyan">
+                      {item.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+                      <Icon name="arrowUpRight" size={14} className="shrink-0" />
+                    </a>
+                  </dd>
+                </div>
+              )}
               <div className="col-span-2 lg:col-span-1">
                 <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Tools used</dt>
                 <dd className="mt-3">
@@ -112,6 +129,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             <Reveal>
               <h2 className="text-2xl font-bold md:text-3xl">The result</h2>
               <p className="mt-4 text-lg text-muted">{item.resultSummary}</p>
+              {item.results.length > 0 && (
               <dl className="mt-8 grid gap-4 sm:grid-cols-3">
                 {item.results.map((r) => (
                   <div key={r.label} className="flex flex-col-reverse rounded-2xl border border-line p-6">
@@ -120,10 +138,59 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                   </div>
                 ))}
               </dl>
+              )}
             </Reveal>
           </div>
         </div>
       </section>
+
+      {/* How it works (optional) */}
+      {item.architecture && (
+        <section aria-labelledby="architecture-title" className="cv-auto py-12 md:py-16">
+          <div className="container-x">
+            <h2 id="architecture-title" className="text-2xl font-bold md:text-3xl">
+              How it works
+            </h2>
+            {/* table on larger screens */}
+            <div className="mt-8 hidden overflow-hidden rounded-3xl glass md:block">
+              <table className="w-full text-left text-sm">
+                <thead className="border-b border-line text-xs tracking-[0.18em] text-muted uppercase">
+                  <tr>
+                    <th scope="col" className="w-[22%] px-6 py-4 font-semibold">Phase</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Methodology</th>
+                    <th scope="col" className="px-6 py-4 font-semibold">Advantage</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-line">
+                  {item.architecture.map((row, i) => (
+                    <tr key={row.phase} className="align-top">
+                      <th scope="row" className="px-6 py-5 font-semibold">
+                        <span className="mr-3 font-display text-xs text-gradient">0{i + 1}</span>
+                        {row.phase}
+                      </th>
+                      <td className="px-6 py-5 text-muted">{row.method}</td>
+                      <td className="px-6 py-5 text-muted">{row.advantage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {/* stacked cards on phones */}
+            <ol className="mt-8 space-y-4 md:hidden">
+              {item.architecture.map((row, i) => (
+                <li key={row.phase} className="rounded-2xl glass p-5">
+                  <h3 className="font-semibold">
+                    <span className="mr-2 font-display text-xs text-gradient">0{i + 1}</span>
+                    {row.phase}
+                  </h3>
+                  <p className="mt-3 text-sm text-muted">{row.method}</p>
+                  <p className="mt-2 text-sm">{row.advantage}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
 
       {/* Gallery / video */}
       <section aria-labelledby="gallery-title" className="cv-auto py-12 md:py-16">

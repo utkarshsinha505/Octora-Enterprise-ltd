@@ -101,10 +101,8 @@ export const clientLogos: ClientLogo[] = [
   { src: "/media/logos/kora.svg", alt: "Kora Studio", width: 260, height: 48 },
   { src: "/media/logos/voltra.svg", alt: "Voltra Motors", width: 260, height: 48 },
   { src: "/media/logos/saffron-leaf.svg", alt: "Saffron Leaf Tea", width: 260, height: 48 },
-  { src: "/media/logos/brightpath.svg", alt: "Brightpath Academy", width: 260, height: 48 },
   { src: "/media/logos/lumen-labs.svg", alt: "Lumen Labs", width: 260, height: 48 },
   { src: "/media/logos/atlas.svg", alt: "Atlas & Co", width: 260, height: 48 },
-  { src: "/media/logos/ember-oak.svg", alt: "Ember & Oak", width: 260, height: 48 },
 ];
 
 // PLACEHOLDER numbers: update with real figures.
@@ -440,31 +438,104 @@ export const work: WorkItem[] = [
     ],
   },
   {
-    slug: "brightpath-academy",
-    title: "Brightpath Academy",
-    client: "Brightpath Academy",
+    slug: "truth-lens",
+    title: "Truth Lens",
+    client: "UPÉ Synthetic · In-house product",
     category: "websites",
-    year: "2025",
+    year: "In-house",
+    liveUrl: "https://truthlensai-five.vercel.app/",
     featured: true,
-    summary: "A modern admissions website with AI-illustrated campus stories and a two-minute enquiry flow.",
-    cover: { src: "/media/work/brightpath-academy/cover.webp", alt: "A clean school website layout in indigo and sky blue" },
+    summary:
+      "A multi-model news verification engine that dissects a story segment by segment, natively in English and Hindi, and shows exactly why.",
+    cover: {
+      src: "/media/work/truth-lens/cover.webp",
+      alt: "The Truth Lens app asking 'Is this news story fake or real?', with options to check a link, paste a story or upload a picture",
+    },
     challenge:
-      "Brightpath's old website was slow, hard to update and generated almost no admission enquiries online.",
+      "Most fact-checking tools hand back a single black-box verdict for a whole article, get distracted by menus and ads, and translate Hindi stories into English first, losing the journalist's exact wording. We set out to build a verifier that is granular, transparent and native-language.",
     approach: [
-      "Mapped the parent journey and rebuilt the sitemap around admissions.",
-      "Designed a bright, trustworthy visual system with AI-illustrated campus scenes.",
-      "Built on Next.js with an editable content layer, WhatsApp enquiry and analytics.",
+      "Clean extraction: ingest the target URL and isolate the primary story text, discarding menus, advertisements and user comments.",
+      "Native Hindi processing: evaluate Hindi stories with models trained on native Hindi news articles, with no intermediate English translation.",
+      "Ensemble verification: convert the text into word-frequency features across 20,000 distinct words and run it through five independent models.",
+      "Micro-segment analysis: re-evaluate the story in chunks of about thirty words to pinpoint which parts look fabricated.",
+      "Transparent wording checks: flag slanted language (angry verbs, name-calling, unverified \"sources say\" claims) using visible English and Hindi word lists.",
     ],
-    tools: ["Figma", "Next.js", "Tailwind CSS", "Vercel", "Midjourney"],
+    tools: ["Vercel edge hosting", "Five-model ensemble", "Native Hindi models", "20,000-word feature space", "Open English & Hindi word lists"],
     results: [
-      { value: "3.4x", label: "more online enquiries" },
-      { value: "98", label: "Lighthouse performance score" },
-      { value: "1.1s", label: "average load time" },
+      { value: "44,000", label: "labelled news stories in the training set" },
+      { value: "5", label: "independent models averaged per verdict" },
+      { value: "~30 words", label: "segment size for pinpointing fabrication" },
     ],
-    resultSummary: "Online admissions enquiries more than tripled in the first intake cycle after launch.",
+    resultSummary:
+      "Truth Lens goes beyond basic fact-checking: readers see which segments look made up and which words were flagged, in English or Hindi, and can read every match for themselves.",
+    architecture: [
+      {
+        phase: "Clean Extraction",
+        method: "Ingests target URLs and isolates the primary story text.",
+        advantage: "Discards menus, advertisements and user comments so the models evaluate only the core journalism.",
+      },
+      {
+        phase: "Native Hindi Processing",
+        method: "Evaluates Hindi stories using models trained specifically on native Hindi news articles.",
+        advantage:
+          "Bypasses intermediate English translation completely, so vocabulary is weighed exactly as the journalist wrote it.",
+      },
+      {
+        phase: "Ensemble Verification",
+        method:
+          "Converts text into numbers based on how often 20,000 distinct words appear, then processes it through five independent models.",
+        advantage:
+          "Mitigates individual model bias by averaging results from a training set of about 23,000 fabricated and 21,000 real news agency stories.",
+      },
+      {
+        phase: "Micro-Segment Analysis",
+        method: "Re-evaluates the story in precise chunks of about thirty words.",
+        advantage:
+          "Pinpoints localised fabricated segments, showing which parts look made up instead of a single broad verdict for the entire article.",
+      },
+      {
+        phase: "Transparent Wording Checks",
+        method:
+          "Flags slanted language (angry verbs, name-calling, unverified \"sources say\" claims) using hard-coded word lists.",
+        advantage:
+          "Relies on separate, visible word lists for English and Hindi idioms rather than black-box AI, so users can read every match.",
+      },
+    ],
     gallery: [
-      { src: "/media/work/brightpath-academy/still-1.webp", alt: "Brightpath Academy website: abstract campus illustration" },
-      { src: "/media/work/brightpath-academy/still-2.webp", alt: "Brightpath Academy website: mirrored homepage layout" },
+      { src: "/media/work/truth-lens/still-1.webp", alt: "Truth Lens segment map: an article split into thirty-word segments, scored from verified to suspect" },
+      { src: "/media/work/truth-lens/still-2.webp", alt: "Truth Lens ensemble: five independent model scores converging into one averaged verdict" },
+    ],
+  },
+
+  {
+    slug: "lotus-avio",
+    title: "Lotus Avio Official Website",
+    client: "Lotus Avio",
+    category: "websites",
+    year: "Ongoing",
+    featured: false,
+    liveUrl: "https://www.lotusavio.com/",
+    summary:
+      "The primary digital hub and storefront for a Patna-based audio and visual production studio, kept secure and up to date by UPÉ.",
+    cover: {
+      src: "/media/work/lotus-avio/cover.webp",
+      alt: "The Lotus Avio homepage: 'Sound and visuals that get your message heard', beside a photo of the recording studio",
+    },
+    challenge:
+      "Lotus Avio needed one place to showcase a diverse range of capabilities, from voice-overs and audio engineering to comprehensive production work and AI voice datasets, with an experience that reflects the brand's creative vision and technical expertise, and that keeps pace with the company's growth.",
+    approach: [
+      "Strategic build: architected from the ground up by the co-founder, blending technical execution with intimate brand knowledge.",
+      "Expert direction: developed under the guidance and strategic mentorship of Saket Sinha, shaping the site's structure, user interface and overall digital strategy.",
+      "Brand alignment: a custom digital environment tailored to highlight professional media and production portfolios.",
+      "Sustainable management: long-term technical upkeep, security and content updates handled exclusively by UPÉ Synthetic Limited.",
+    ],
+    tools: ["Custom-built website", "Light & dark themes", "Security & maintenance", "Content updates by UPÉ"],
+    results: [],
+    resultSummary:
+      "The site reliably reflects Lotus Avio's latest media projects, service offerings and milestones, with UPÉ keeping it dynamic, secure and up to date without interruption.",
+    gallery: [
+      { src: "/media/work/lotus-avio/still-1.webp", alt: "Lotus Avio homepage hero with the studio photo and service highlights" },
+      { src: "/media/work/lotus-avio/still-2.webp", alt: "Lotus Avio 'Selected work' section showcasing recent campaigns" },
     ],
   },
   {
@@ -495,33 +566,7 @@ export const work: WorkItem[] = [
       { src: "/media/work/voltra-launch/still-2.webp", alt: "Still from Voltra: the vehicle in profile under violet light" },
     ],
   },
-  {
-    slug: "ember-and-oak",
-    title: "Ember & Oak",
-    client: "Ember & Oak Café",
-    category: "websites",
-    year: "2024",
-    featured: false,
-    summary: "A warm, story-led website and menu experience for a neighbourhood café.",
-    cover: { src: "/media/work/ember-and-oak/cover.webp", alt: "A warm amber website design for a café" },
-    challenge: "The café relied on Instagram alone and wanted a home for its menu, story and table bookings.",
-    approach: [
-      "Wrote and designed a story-first homepage around the founders' wood-fired kitchen.",
-      "Generated AI food and interior imagery to match the café's warm palette.",
-      "Added WhatsApp booking, Google Maps and an easily editable menu.",
-    ],
-    tools: ["Figma", "Next.js", "Midjourney", "Vercel"],
-    results: [
-      { value: "+60%", label: "weekend bookings" },
-      { value: "4.9★", label: "Google rating maintained" },
-      { value: "2 weeks", label: "design to launch" },
-    ],
-    resultSummary: "The site now drives most of the café's weekend bookings directly via WhatsApp.",
-    gallery: [
-      { src: "/media/work/ember-and-oak/still-1.webp", alt: "Ember & Oak website: warm ambient orbs" },
-      { src: "/media/work/ember-and-oak/still-2.webp", alt: "Ember & Oak website: mirrored layout" },
-    ],
-  },
+
   {
     slug: "sunrise-anthem",
     title: "Sunrise School Anthem",
@@ -594,21 +639,37 @@ export const culture = {
   ],
 };
 
-// PLACEHOLDER team: replace names, bios and photos with your real team.
-export const team: TeamMember[] = [
+// PLACEHOLDER co-founders: replace names, roles, bios, highlights and photos with the real co-founders.
+// Both are featured on the home page and at the top of /about/leadership.
+export const cofounders: TeamMember[] = [
   {
-    name: "[Founder Name]",
-    role: "Founder & Creative Director",
-    bio: "A filmmaker turned AI artist who started UPÉ to give every brand access to cinematic storytelling. Leads creative direction on every major project.",
-    photo: { src: "/media/team/founder.webp", alt: "Portrait of the founder of UPÉ" },
+    name: "[Co-founder Name]",
+    role: "Co-founder & Creative Director",
+    bio: "A filmmaker turned AI artist who co-founded UPÉ to give every brand access to cinematic storytelling. Leads creative direction on every major project.",
+    photo: { src: "/media/team/co-founder-1.webp", alt: "Portrait of UPÉ's co-founder and creative director" },
     highlights: [
       "120+ AI productions directed",
       "Background in film direction and editing",
       "Speaker on generative AI in advertising",
+    ],
+    links: [{ label: "LinkedIn", href: "https://linkedin.com/" }],
+  },
+  {
+    name: "[Co-founder Name]",
+    role: "Co-founder & Managing Director",
+    bio: "Runs strategy, client partnerships and operations, making sure every project is scoped clearly, delivered on time and built to grow the client's business.",
+    photo: { src: "/media/team/co-founder-2.webp", alt: "Portrait of UPÉ's co-founder and managing director" },
+    highlights: [
+      "Leads client strategy and partnerships",
+      "Oversees production pipelines and delivery",
       "Mentors students in AI filmmaking",
     ],
     links: [{ label: "LinkedIn", href: "https://linkedin.com/" }],
   },
+];
+
+// PLACEHOLDER core team: replace names, bios and photos with your real team.
+export const team: TeamMember[] = [
   {
     name: "[Team Member Name]",
     role: "Head of Design",

@@ -3,11 +3,11 @@ import Link from "next/link";
 import {
   audiences,
   clientLogos,
+  cofounders,
   finalCta,
   services,
   stats,
   steps,
-  team,
   testimonials,
 } from "@/data/site";
 import { featuredWork, whatsappHref } from "@/lib/utils";
@@ -168,41 +168,57 @@ export function HowWeWork() {
   );
 }
 
-/* 8 ─ Founder spotlight */
+/* 8 ─ Co-founders spotlight */
 export function TeamSpotlight() {
-  const founder = team[0];
   return (
-    <Section id="founder" className="overflow-hidden">
-      <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="relative mx-auto w-full max-w-sm lg:col-span-5 lg:max-w-none">
-          <div aria-hidden="true" className="absolute -inset-20 rounded-full glow-violet opacity-50" />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-line">
-            <Image src={founder.photo.src} alt={founder.photo.alt} fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover" />
-          </div>
-        </Reveal>
-        <Reveal delay={0.1} className="lg:col-span-7">
-          <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] text-muted uppercase">
-            <span aria-hidden="true" className="bg-accent h-px w-8" />
-            Meet the founder
-          </p>
-          <h2 id="founder-title" className="text-3xl font-bold md:text-5xl">{founder.name}</h2>
-          <p className="mt-2 text-lg text-gradient font-semibold">{founder.role}</p>
-          <p className="mt-6 text-lg text-muted">{founder.bio}</p>
-          {founder.highlights && (
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {founder.highlights.map((h) => (
-                <li key={h} className="flex items-start gap-3 rounded-2xl glass p-4 text-sm">
-                  <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
-                  {h}
-                </li>
-              ))}
-            </ul>
-          )}
-          <ButtonLink href="/about/leadership" variant="secondary" className="mt-8">
-            Meet the team <Icon name="arrowRight" size={18} />
-          </ButtonLink>
-        </Reveal>
-      </div>
+    <Section
+      id="cofounders"
+      eyebrow="Meet the co-founders"
+      title={
+        <>
+          The minds behind <span className="text-gradient">UPÉ.</span>
+        </>
+      }
+      intro="Two co-founders, one obsession: making world-class creative production possible for every brand, creator and institution."
+      action={
+        <ButtonLink href="/about/leadership" variant="secondary">
+          Meet the team <Icon name="arrowRight" size={18} />
+        </ButtonLink>
+      }
+    >
+      <ul className="grid gap-6 lg:grid-cols-2">
+        {cofounders.map((person, i) => (
+          <Reveal as="li" key={person.role} delay={i * 0.1} className="flex">
+            {/* grid areas: portrait beside name on phones, beside name + bio from sm up */}
+            <article className="group glow-border relative grid w-full grid-cols-[6rem_1fr] gap-x-5 gap-y-5 rounded-[2rem] glass p-6 [grid-template-areas:'photo_head'_'bio_bio'_'list_list'] sm:grid-cols-[10rem_1fr] sm:gap-x-7 sm:[grid-template-areas:'photo_head'_'photo_bio'_'list_list'] md:p-8">
+              <div className="relative aspect-[4/5] self-start overflow-hidden rounded-2xl border border-line [grid-area:photo]">
+                <Image
+                  src={person.photo.src}
+                  alt={person.photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 10rem, 6rem"
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+              <div className="self-end [grid-area:head] sm:self-start">
+                <h3 className="text-2xl font-bold md:text-3xl">{person.name}</h3>
+                <p className="mt-1 font-semibold text-gradient">{person.role}</p>
+              </div>
+              <p className="text-muted [grid-area:bio]">{person.bio}</p>
+              {person.highlights && (
+                <ul className="grid gap-2.5 border-t border-line pt-5 text-sm [grid-area:list]">
+                  {person.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-3">
+                      <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          </Reveal>
+        ))}
+      </ul>
     </Section>
   );
 }
