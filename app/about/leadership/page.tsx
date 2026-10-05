@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { cofounders, leadership, team } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
-import { cn } from "@/lib/utils";
 import { AboutNav } from "@/components/about/AboutNav";
 import { ButtonLink, buttonClasses } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -41,84 +40,92 @@ export default function LeadershipPage() {
           <h2 id="cofounders-title" className="text-3xl font-bold sm:text-4xl md:text-5xl">
             Co-founders
           </h2>
-          <ul className="mt-10 space-y-6">
-            {cofounders.map((person, i) => (
-              <Reveal
-                as="li"
-                key={person.role}
-                className="grid items-start gap-10 overflow-hidden rounded-[2rem] glass p-6 md:p-10 lg:grid-cols-12"
-              >
-                {/* photos alternate sides on large screens */}
-                <div
-                  className={cn(
-                    "relative aspect-[4/5] overflow-hidden rounded-3xl border border-line lg:col-span-5",
-                    i % 2 === 1 && "lg:order-2",
-                  )}
-                >
-                  <Image src={person.photo.src} alt={person.photo.alt} fill sizes="(min-width: 1024px) 35vw, 90vw" className="object-cover" />
-                </div>
-                <div className="lg:col-span-7">
-                  <p className="text-sm font-semibold text-balance text-gradient">{person.role}</p>
-                  <h3 className="mt-2 text-2xl font-bold [overflow-wrap:anywhere] md:text-4xl">{person.name}</h3>
-                  {person.profile ? (
-                    <div className="mt-6 space-y-4 text-lg text-muted">
-                      {person.profile.map((para) => (
-                        <p key={para}>{para}</p>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="mt-6 text-lg text-muted">{person.bio}</p>
-                  )}
+          <ul className="mt-10 grid gap-6 lg:grid-cols-2">
+            {cofounders.map((person) => (
+              // side by side from lg: subgrid rows keep photos, names, content and buttons level across both cards
+              <Reveal as="li" key={person.role} className="flex lg:row-span-4 lg:grid lg:grid-rows-subgrid">
+                <article className="flex w-full flex-col gap-6 rounded-[2rem] glass p-6 md:p-8 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line">
+                    <Image
+                      src={person.photo.src}
+                      alt={person.photo.alt}
+                      fill
+                      sizes="(min-width: 1280px) 36rem, (min-width: 1024px) 45vw, 90vw"
+                      className="object-cover"
+                    />
+                  </div>
 
-                  {person.expertise ? (
-                    <>
-                      <h4 className="mt-8 font-sans text-xs font-semibold tracking-[0.2em] text-muted uppercase">Core expertise</h4>
-                      <ul className="mt-4 grid gap-3 sm:grid-cols-2">
-                        {person.expertise.map((e) => (
-                          <li key={e.title} className="rounded-2xl border border-line p-5">
-                            <p className="flex items-start gap-2.5 font-semibold">
-                              <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
-                              {e.title}
-                            </p>
-                            <p className="mt-2 text-sm text-muted">{e.description}</p>
+                  <div>
+                    <p className="text-sm font-semibold text-balance text-gradient">{person.role}</p>
+                    <h3 className="mt-2 text-2xl font-bold [overflow-wrap:anywhere] md:text-4xl lg:text-3xl xl:text-4xl">
+                      {person.name}
+                    </h3>
+                  </div>
+
+                  <div>
+                    {person.profile ? (
+                      <div className="space-y-4 text-lg text-muted">
+                        {person.profile.map((para) => (
+                          <p key={para}>{para}</p>
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-lg text-muted">{person.bio}</p>
+                    )}
+
+                    {person.expertise ? (
+                      <>
+                        <h4 className="mt-8 font-sans text-xs font-semibold tracking-[0.2em] text-muted uppercase">Core expertise</h4>
+                        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                          {person.expertise.map((e) => (
+                            <li key={e.title} className="rounded-2xl border border-line p-5">
+                              <p className="flex items-start gap-2.5 font-semibold">
+                                <Icon name="check" size={18} className="mt-0.5 shrink-0 text-cyan light:text-[#0e7490]" />
+                                {e.title}
+                              </p>
+                              <p className="mt-2 text-sm text-muted">{e.description}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      </>
+                    ) : (
+                      person.highlights && (
+                        <ul className="mt-8 space-y-3">
+                          {person.highlights.map((h) => (
+                            <li key={h} className="flex items-start gap-3">
+                              <Icon name="check" size={18} className="mt-1 shrink-0 text-cyan light:text-[#0e7490]" />
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      )
+                    )}
+                  </div>
+
+                  {/* always rendered so both cards keep the same row structure */}
+                  <div className="lg:self-end">
+                    {(person.links || person.email) && (
+                      <ul className="flex flex-wrap gap-3">
+                        {person.links?.map((l) => (
+                          <li key={l.href}>
+                            <a href={l.href} target="_blank" rel="noopener noreferrer" className={buttonClasses("secondary", "sm")}>
+                              {l.label} <Icon name="arrowUpRight" size={14} />
+                              <span className="sr-only">: {person.name} (opens in a new tab)</span>
+                            </a>
                           </li>
                         ))}
-                      </ul>
-                    </>
-                  ) : (
-                    person.highlights && (
-                      <ul className="mt-8 space-y-3">
-                        {person.highlights.map((h) => (
-                          <li key={h} className="flex items-start gap-3">
-                            <Icon name="check" size={18} className="mt-1 shrink-0 text-cyan light:text-[#0e7490]" />
-                            {h}
+                        {person.email && (
+                          <li>
+                            <a href={`mailto:${person.email}`} className={buttonClasses("secondary", "sm")}>
+                              <Icon name="mail" size={16} /> Email
+                              <span className="sr-only"> {person.name}</span>
+                            </a>
                           </li>
-                        ))}
+                        )}
                       </ul>
-                    )
-                  )}
-
-                  {(person.links || person.email) && (
-                    <ul className="mt-8 flex flex-wrap gap-3">
-                      {person.links?.map((l) => (
-                        <li key={l.href}>
-                          <a href={l.href} target="_blank" rel="noopener noreferrer" className={buttonClasses("secondary", "sm")}>
-                            {l.label} <Icon name="arrowUpRight" size={14} />
-                            <span className="sr-only">: {person.name} (opens in a new tab)</span>
-                          </a>
-                        </li>
-                      ))}
-                      {person.email && (
-                        <li>
-                          <a href={`mailto:${person.email}`} className={buttonClasses("secondary", "sm")}>
-                            <Icon name="mail" size={16} /> Email
-                            <span className="sr-only"> {person.name}</span>
-                          </a>
-                        </li>
-                      )}
-                    </ul>
-                  )}
-                </div>
+                    )}
+                  </div>
+                </article>
               </Reveal>
             ))}
           </ul>
@@ -147,7 +154,7 @@ export default function LeadershipPage() {
           </ul>
 
           <h3 className="mt-16 text-2xl font-bold md:text-3xl">Core team</h3>
-          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {team.map((member, i) => (
               <Reveal as="li" key={member.role} delay={(i % 4) * 0.08}>
                 <article className="group glow-border relative flex h-full flex-col overflow-hidden rounded-3xl glass">
@@ -156,7 +163,7 @@ export default function LeadershipPage() {
                       src={member.photo.src}
                       alt={member.photo.alt}
                       fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>

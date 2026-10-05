@@ -734,6 +734,13 @@ export const leadership = {
 // PLACEHOLDER core team: replace names, bios and photos with your real team.
 export const team: TeamMember[] = [
   {
+    name: "Sonal Sinha",
+    role: "Senior Advisor",
+    // short role description; replace with Sonal's own bio when available
+    bio: "Senior Advisor to UPÉ Synthetic Limited, guiding the leadership team on the company's strategy and growth.",
+    photo: { src: "/media/team/sonal-sinha.webp", alt: "Portrait of Sonal Sinha, Senior Advisor to UPÉ Synthetic Limited" },
+  },
+  {
     name: "[Team Member Name]",
     role: "Head of Design",
     bio: "Shapes the visual language of every campaign and website, from moodboards to the final colour grade.",
