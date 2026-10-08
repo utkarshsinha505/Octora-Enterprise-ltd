@@ -44,7 +44,7 @@ const organizationJsonLd = {
     telephone: site.contact.phone,
     address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: site.country },
   }),
-  sameAs: site.social.map((s) => s.href),
+  ...(site.social.length > 0 && { sameAs: site.social.map((s) => s.href) }),
   ...(namedCofounders.length > 0 && {
     founder: namedCofounders.map((c) => ({
       "@type": "Person",

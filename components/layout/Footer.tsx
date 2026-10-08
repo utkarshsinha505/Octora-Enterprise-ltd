@@ -4,7 +4,6 @@ import { mailHref, mapHref, telHref, whatsappHref } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Logo } from "./Logo";
-import { MotionToggle } from "./MotionToggle";
 
 const explore = nav.flatMap((item) => (item.children ? item.children.map(({ label, href }) => ({ label, href })) : [item]));
 
@@ -90,18 +89,17 @@ export function Footer() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {site.name}. All rights reserved.</p>
-          <ul className="flex flex-wrap items-center gap-5">
-            <li>
-              <MotionToggle />
-            </li>
-            {site.social.map((s) => (
-              <li key={s.label}>
-                <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {site.social.length > 0 && (
+            <ul className="flex flex-wrap items-center gap-5">
+              {site.social.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </footer>

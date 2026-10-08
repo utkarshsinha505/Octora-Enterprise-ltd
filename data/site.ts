@@ -60,11 +60,11 @@ export const site = {
   features: {
     contact: false,
   },
-  social: [
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "YouTube", href: "https://youtube.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
-  ],
+  /**
+   * Social profiles, shown in the footer and added to the site's structured data.
+   * Empty for now; add real profile URLs, e.g. { label: "Instagram", href: "https://instagram.com/yourhandle" }.
+   */
+  social: [] as { label: string; href: string }[],
 };
 
 /* ──────────────────────── Navigation ─────────────────────── */
