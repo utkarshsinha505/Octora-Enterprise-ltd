@@ -16,6 +16,7 @@ import type {
   Audience,
   Capability,
   ClientLogo,
+  ComingSoon,
   Faq,
   Service,
   Stat,
@@ -402,34 +403,6 @@ export const work: WorkItem[] = [
     ],
   },
   {
-    slug: "echoes-of-tomorrow",
-    title: "Echoes of Tomorrow",
-    client: "Mira Vale",
-    category: "ai-songs",
-    year: "2025",
-    featured: true,
-    summary: "An original synth-pop single and visualiser for an independent artist's debut EP.",
-    cover: { src: "/media/work/echoes-of-tomorrow/cover.webp", alt: "Violet and cyan audio waveform bars pulsing on a dark background" },
-    challenge:
-      "Mira had lyrics and a melody on a voice note, but no budget for a full studio production or a music video.",
-    approach: [
-      "Developed the arrangement with AI music tools, then refined it with a session producer.",
-      "Recorded Mira's real vocals and mixed them over the AI-assisted instrumental.",
-      "Created a looping audio-reactive visualiser for streaming and social.",
-    ],
-    tools: ["Suno", "Ableton Live", "iZotope Ozone", "TouchDesigner"],
-    results: [
-      { value: "250K", label: "streams in first month" },
-      { value: "3", label: "editorial playlist adds" },
-      { value: "10 days", label: "voice note to release" },
-    ],
-    resultSummary: "The single launched Mira's EP campaign and led to two more tracks produced with UPÉ.",
-    gallery: [
-      { src: "/media/work/echoes-of-tomorrow/still-1.webp", alt: "Visualiser frame from Echoes of Tomorrow" },
-      { src: "/media/work/echoes-of-tomorrow/still-2.webp", alt: "Mirrored waveform frame from Echoes of Tomorrow" },
-    ],
-  },
-  {
     slug: "the-rise-of-the-undertaker",
     title: "The Rise of The Undertaker",
     client: "UPÉ Biography · YouTube series",
@@ -565,33 +538,15 @@ export const work: WorkItem[] = [
     ],
   },
 
+];
+
+// Categories with no published projects yet. Each shows a "Coming soon" card on the home page
+// and on the Work page; the card disappears automatically once a project in that category is added.
+export const comingSoon: ComingSoon[] = [
   {
-    slug: "sunrise-anthem",
-    title: "Sunrise School Anthem",
-    client: "Sunrise Public School",
     category: "ai-songs",
-    year: "2024",
-    featured: false,
-    summary: "An original school anthem and music video, performed live at annual day.",
-    cover: { src: "/media/work/sunrise-anthem/cover.webp", alt: "Stage lights in pink and gold over a cheering crowd" },
-    challenge:
-      "The school wanted an anthem students would actually love singing, and a video to premiere at its 25th annual day.",
-    approach: [
-      "Ran a lyric workshop with students and teachers to capture the school's spirit.",
-      "Composed and produced the anthem, then recorded the school choir over the final track.",
-      "Created an AI music video blending real campus photos with dreamlike visuals.",
-    ],
-    tools: ["Suno", "Logic Pro", "Runway", "Premiere Pro"],
-    results: [
-      { value: "1,200", label: "students singing live" },
-      { value: "90K", label: "video views by parents" },
-      { value: "3 weeks", label: "workshop to premiere" },
-    ],
-    resultSummary: "The anthem is now sung at every school assembly and was adopted as the official school song.",
-    gallery: [
-      { src: "/media/work/sunrise-anthem/still-1.webp", alt: "Still from the Sunrise anthem video: spotlights on stage" },
-      { src: "/media/work/sunrise-anthem/still-2.webp", alt: "Still from the Sunrise anthem video: golden confetti" },
-    ],
+    title: "AI Songs",
+    text: "Original songs, jingles and anthems made with AI and real musicians. Our first releases are coming soon.",
   },
 ];
 

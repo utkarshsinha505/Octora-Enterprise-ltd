@@ -1,4 +1,4 @@
-import { services, site, work } from "@/data/site";
+import { comingSoon, services, site, work } from "@/data/site";
 import type { ServiceId } from "@/data/types";
 
 export function cn(...classes: (string | false | null | undefined)[]) {
@@ -27,3 +27,6 @@ export function absoluteUrl(path = "/") {
 }
 
 export const featuredWork = work.filter((w) => w.featured).slice(0, 6);
+
+/** "Coming soon" placeholders for categories that don't have a project yet. */
+export const upcoming = comingSoon.filter((c) => !work.some((w) => w.category === c.category));

@@ -71,6 +71,12 @@ export type WorkItem = {
   }[];
 };
 
+export type ComingSoon = {
+  category: ServiceId;
+  title: string;
+  text: string;
+};
+
 export type Stat = {
   value: number;
   suffix?: string;

@@ -11,7 +11,7 @@ import {
   steps,
   testimonials,
 } from "@/data/site";
-import { featuredWork, whatsappHref } from "@/lib/utils";
+import { featuredWork, upcoming, whatsappHref } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Counter } from "@/components/ui/Counter";
 import { Icon, serviceIcon } from "@/components/ui/Icon";
@@ -19,6 +19,7 @@ import { Marquee } from "@/components/ui/Marquee";
 import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { WorkCard } from "@/components/work/WorkCard";
+import { ComingSoonCard } from "@/components/work/ComingSoonCard";
 
 /* 2 ─ Trusted by */
 export function TrustedBy() {
@@ -54,6 +55,11 @@ export function SelectedWork() {
         {featuredWork.map((item, i) => (
           <Reveal as="li" key={item.slug} delay={(i % 3) * 0.08} className="flex">
             <WorkCard item={item} className="w-full" />
+          </Reveal>
+        ))}
+        {upcoming.slice(0, Math.max(0, 6 - featuredWork.length)).map((c, i) => (
+          <Reveal as="li" key={c.category} delay={((featuredWork.length + i) % 3) * 0.08} className="flex">
+            <ComingSoonCard item={c} className="w-full" />
           </Reveal>
         ))}
       </ul>
