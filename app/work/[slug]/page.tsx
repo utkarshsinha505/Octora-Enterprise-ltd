@@ -86,6 +86,12 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
                 <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Year</dt>
                 <dd className="mt-1 font-semibold">{item.year}</dd>
               </div>
+              {item.createdBy && (
+                <div className="col-span-2 lg:col-span-1">
+                  <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Created by</dt>
+                  <dd className="mt-1 font-semibold">{item.createdBy}</dd>
+                </div>
+              )}
               {item.liveUrl && (
                 <div className="col-span-2 lg:col-span-1">
                   <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">{item.videoEmbed ? "Watch" : "Live site"}</dt>
@@ -195,11 +201,32 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       {/* Gallery / video */}
       <section aria-labelledby="gallery-title" className="cv-auto py-12 md:py-16">
         <div className="container-x">
-          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">{item.gallery.length ? "Gallery" : "Watch the episode"}</h2>
+          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">{item.videos?.length ? "The films" : item.gallery.length ? "Gallery" : "Watch the episode"}</h2>
           {item.videoEmbed && (
             <div className="mt-8">
               <VideoEmbed src={item.videoEmbed} title={`${item.title}: ${item.client}`} poster={item.videoPoster ?? item.cover.src} />
             </div>
+          )}
+          {item.videos && item.videos.length > 0 && (
+            <ul className="mt-8 grid gap-6 md:grid-cols-2">
+              {item.videos.map((v) => (
+                <Reveal as="li" key={v.embed}>
+                  <VideoEmbed src={v.embed} title={`${item.title}: ${v.title}`} poster={v.poster} />
+                  <div className="mt-4 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                    <h3 className="text-lg font-bold">{v.title}</h3>
+                    <p className="flex items-center gap-3 text-sm text-muted">
+                      {v.duration && <span className="tabular-nums">{v.duration}</span>}
+                      {v.link && (
+                        <a href={v.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 font-semibold text-fg hover:text-cyan">
+                          Open <Icon name="arrowUpRight" size={14} />
+                          <span className="sr-only"> {v.title} in a new tab</span>
+                        </a>
+                      )}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </ul>
           )}
           {item.gallery.length > 0 && (
             <ul className="mt-8 grid gap-6 md:grid-cols-2">

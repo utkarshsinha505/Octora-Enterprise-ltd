@@ -47,6 +47,8 @@ export type WorkItem = {
   results: { value: string; label: string }[];
   resultSummary: string;
   gallery: Media[];
+  /** Optional credit shown in the case-study sidebar, e.g. "Jane Doe, Creative Director" */
+  createdBy?: string;
   /** Optional link to the live product/site, shown as a "Visit live site" button */
   liveUrl?: string;
   /** Button text for `liveUrl` (default "Visit live site"), e.g. "Watch on YouTube" */
@@ -57,6 +59,16 @@ export type WorkItem = {
   architecture?: { phase: string; method: string; advantage: string }[];
   /** Optional YouTube/Vimeo embed URL, e.g. https://www.youtube-nocookie.com/embed/VIDEO_ID */
   videoEmbed?: string;
+  /** Optional set of films shown as a grid of players (e.g. Google Drive ".../preview" or YouTube embed URLs) */
+  videos?: {
+    title: string;
+    embed: string;
+    /** 16:9 still shown before the film is played */
+    poster: string;
+    duration?: string;
+    /** Optional link to open the film on its host (e.g. Google Drive or YouTube) */
+    link?: string;
+  }[];
 };
 
 export type Stat = {

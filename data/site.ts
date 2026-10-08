@@ -310,34 +310,68 @@ export const serviceFaqs: Faq[] = [
 
 export const work: WorkItem[] = [
   {
-    slug: "monsoon-reverie",
-    title: "Monsoon Reverie",
-    client: "Saffron Leaf Tea",
+    slug: "sapno-ka-bharat-2047",
+    title: "Sapno ka Bharat 2047: Yuva Samvad",
+    client: "BJP NRI Cell",
     category: "ai-ad-films",
-    year: "2025",
+    year: "2026",
     featured: true,
-    summary: "A rain-soaked festive ad film created entirely with AI, without a single location shoot.",
-    cover: { src: "/media/work/monsoon-reverie/cover.webp", alt: "Emerald and amber light rippling like monsoon rain over a tea estate" },
+    createdBy: "Utkarsh Sinha, Co-founder & CEO",
+    summary:
+      "Four AI ad films for BJP NRI Cell's youth event Sapno ka Bharat 2047 – Yuva Samvad, conceived, created and edited single-handedly by our CEO, Utkarsh Sinha.",
+    cover: {
+      src: "/media/work/sapno-ka-bharat-2047/cover.webp",
+      alt: "The Sapno ka Bharat 2047 stage, with the line 'Yuva ki baat, Yuva ke saath' on the screens",
+    },
     challenge:
-      "Saffron Leaf wanted a monsoon campaign film with sweeping tea-estate visuals, but the season, budget and three-week deadline ruled out a traditional shoot.",
+      "BJP NRI Cell needed a set of films for Sapno ka Bharat 2047 – Yuva Samvad, a dialogue with India's youth. The films had to bring the event's idea, \"Yuva ki baat, Yuva ke saath\", to life and show a confident, developed India of 2047 that young people could see themselves in. Utkarsh Sinha, UPÉ's co-founder and CEO, took the project on personally and saw it through on his own, from the first idea to the final cut.",
     approach: [
-      "Wrote a 45-second script around the ritual of the first cup on a rainy evening.",
-      "Generated tea-estate landscapes, rain textures and a recurring family of characters with consistent faces across shots.",
-      "Composited real product packshots into AI scenes and graded the film for warm, nostalgic tones.",
-      "Delivered a 45s hero film plus 15s and 6s cut-downs for digital.",
+      "One story in four parts: Utkarsh shaped the series around a single idea, India's youth building the country of their dreams, and gave each film its own chapter of it.",
+      "Film 1, Youth and enterprise: young professionals in a modern Indian city, startup teams at work, and a crowd forming the tricolour and the Ashoka Chakra.",
+      "Film 2, Innovation and opportunity: students and mentors, designers, coders, engineers and farmers using drones, ending on a skyline of the future.",
+      "Film 3, the event: the Sapno ka Bharat 2047 stage and its audience, intercut with science, the national flag and a rocket launch.",
+      "Film 4, A developed Bharat: modern highways, robotics labs, manufacturing and smart farming, closing on the words \"Sapno ka Bharat\".",
+      "Single-handed production: Utkarsh directed and generated every shot with AI himself, then edited, paced and finished all four Full HD films, 42 seconds to just over a minute each.",
     ],
-    tools: ["Runway", "Midjourney", "ElevenLabs", "DaVinci Resolve", "After Effects"],
+    tools: ["AI video generation", "AI-generated visuals", "Video editing"],
     results: [
-      { value: "3.2M", label: "views in 3 weeks" },
-      { value: "68%", label: "lower cost than a live shoot" },
-      { value: "12 days", label: "brief to final master" },
+      { value: "4", label: "AI ad films for one event" },
+      { value: "1", label: "creator, start to finish" },
+      { value: "1080p", label: "Full HD at 60 fps" },
     ],
     resultSummary:
-      "The film became the brand's best-performing ad of the season and was later adapted for regional TV.",
-    gallery: [
-      { src: "/media/work/monsoon-reverie/still-1.webp", alt: "Still from Monsoon Reverie: rain ribbons over a green valley" },
-      { src: "/media/work/monsoon-reverie/still-2.webp", alt: "Still from Monsoon Reverie: amber light through monsoon clouds" },
+      "One person, four films. Utkarsh delivered all four AI ad films for Sapno ka Bharat 2047 – Yuva Samvad on his own, each telling a different part of the same story: India's youth building the country of their dreams. It's what UPÉ is built on: using AI so a small team can make work that once needed a full production crew.",
+    videos: [
+      {
+        title: "Film 1 · Youth and enterprise",
+        duration: "0:42",
+        embed: "https://drive.google.com/file/d/1ROV__zia3OLDSFhOYO2C_wSdtNr7lpkL/preview",
+        link: "https://drive.google.com/file/d/1ROV__zia3OLDSFhOYO2C_wSdtNr7lpkL/view",
+        poster: "/media/work/sapno-ka-bharat-2047/film-1.webp",
+      },
+      {
+        title: "Film 2 · Innovation and opportunity",
+        duration: "1:02",
+        embed: "https://drive.google.com/file/d/1PBCLJ21SwprDqABEA71O87HvnTzV1hzo/preview",
+        link: "https://drive.google.com/file/d/1PBCLJ21SwprDqABEA71O87HvnTzV1hzo/view",
+        poster: "/media/work/sapno-ka-bharat-2047/film-2.webp",
+      },
+      {
+        title: "Film 3 · Yuva ki baat, Yuva ke saath",
+        duration: "0:56",
+        embed: "https://drive.google.com/file/d/1HkXfhEn-WtbZAxwGAB9-ePdcCzI_YE7C/preview",
+        link: "https://drive.google.com/file/d/1HkXfhEn-WtbZAxwGAB9-ePdcCzI_YE7C/view",
+        poster: "/media/work/sapno-ka-bharat-2047/film-3.webp",
+      },
+      {
+        title: "Film 4 · A developed Bharat",
+        duration: "0:56",
+        embed: "https://drive.google.com/file/d/1jasMfgumYxaB7CKLw9iKBMrnwUBx4fUf/preview",
+        link: "https://drive.google.com/file/d/1jasMfgumYxaB7CKLw9iKBMrnwUBx4fUf/view",
+        poster: "/media/work/sapno-ka-bharat-2047/film-4.webp",
+      },
     ],
+    gallery: [],
   },
   {
     slug: "neon-bazaar",
@@ -505,7 +539,7 @@ export const work: WorkItem[] = [
     client: "Lotus Avio",
     category: "websites",
     year: "Ongoing",
-    featured: false,
+    featured: true,
     liveUrl: "https://www.lotusavio.com/",
     summary:
       "The primary digital hub and storefront for a Patna-based audio and visual production studio, kept secure and up to date by UPÉ.",
@@ -528,34 +562,6 @@ export const work: WorkItem[] = [
     gallery: [
       { src: "/media/work/lotus-avio/still-1.webp", alt: "Lotus Avio homepage hero with the studio photo and service highlights" },
       { src: "/media/work/lotus-avio/still-2.webp", alt: "Lotus Avio 'Selected work' section showcasing recent campaigns" },
-    ],
-  },
-  {
-    slug: "voltra-launch",
-    title: "Voltra: Ride the Future",
-    client: "Voltra Motors",
-    category: "ai-ad-films",
-    year: "2024",
-    featured: true,
-    summary: "A launch film for an electric scooter, set on a synthwave highway that doesn't exist.",
-    cover: { src: "/media/work/voltra-launch/cover.webp", alt: "A violet electric vehicle racing down a glowing synthwave highway" },
-    challenge:
-      "Voltra's prototype wasn't road-ready in time for its launch event, yet the brand needed a high-energy hero film.",
-    approach: [
-      "Built a precise 3D-referenced model of the scooter so AI shots stayed product-accurate.",
-      "Generated a synthwave cityscape and highway sequence with dynamic camera moves.",
-      "Delivered a 60s launch film, event-screen loop and vertical teasers.",
-    ],
-    tools: ["Blender", "Runway", "Kling", "After Effects", "DaVinci Resolve"],
-    results: [
-      { value: "1,800", label: "pre-orders in launch week" },
-      { value: "4.1M", label: "impressions across platforms" },
-      { value: "0", label: "physical shoots needed" },
-    ],
-    resultSummary: "The launch film drove Voltra's strongest pre-order week and set the tone for its brand identity.",
-    gallery: [
-      { src: "/media/work/voltra-launch/still-1.webp", alt: "Still from Voltra: the highway vanishing into a neon horizon" },
-      { src: "/media/work/voltra-launch/still-2.webp", alt: "Still from Voltra: the vehicle in profile under violet light" },
     ],
   },
 
