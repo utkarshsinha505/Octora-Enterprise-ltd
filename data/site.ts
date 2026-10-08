@@ -746,7 +746,7 @@ export const team: TeamMember[] = [
     role: "Senior Advisor · Music",
     // short role description; replace with Shashwat's own bio when available
     bio: "Senior Advisor to UPÉ Synthetic Limited, bringing his expertise in music to guide the studio's AI songs, soundtracks and sound.",
-    photo: { src: "/media/team/shashwat-sinha.webp", alt: "Portrait of Shashwat Sinha, Senior Advisor (Music) at UPÉ Synthetic Limited" },
+    photo: { src: "/media/team/shashwat-sinha-v2.webp", alt: "Portrait of Shashwat Sinha, Senior Advisor (Music) at UPÉ Synthetic Limited" },
   },
   {
     name: "Aditya Bharadwaj",
