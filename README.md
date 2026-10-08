@@ -52,7 +52,7 @@ Everything marked **PLACEHOLDER** in `data/site.ts`, and anything in `[square br
 - [ ] `testimonials`: real, attributable quotes (the current ones are illustrative)
 - [ ] `work`: Truth Lens and Lotus Avio are real projects; the other six case studies are fictional examples. Replace them with real projects.
 - [x] `cofounders`: Pratham Srivastava and Utkarsh Sinha are complete (photos in `public/media/team/`, 4:5 portraits). Co-founders are added to the site's structured data automatically.
-- [ ] `team`: real names, bios and photos for the core team
+- [ ] `team`: add your core team members (the "Core team" section on the Leadership page stays hidden until the list has someone in it; an example entry is in the comment above `team`)
 - [ ] `contactPage.budgetRanges`: currency and ranges for your market
 - [ ] Placeholder images in `public/media/` (see below)
 

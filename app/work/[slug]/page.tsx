@@ -201,8 +201,13 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       {/* Gallery / video */}
       <section aria-labelledby="gallery-title" className="cv-auto py-12 md:py-16">
         <div className="container-x">
-          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">{item.videos?.length ? "The films" : item.gallery.length ? "Gallery" : "Watch the episode"}</h2>
-          {item.videoEmbed && (
+          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">{item.videos?.length ? "The films" : item.gallery.length ? "Gallery" : item.videoVertical ? "Watch the Short" : "Watch the episode"}</h2>
+          {item.videoEmbed && item.videoVertical && (
+            <div className="mx-auto mt-8 w-full max-w-sm">
+              <VideoEmbed src={item.videoEmbed} title={`${item.title}: ${item.client}`} poster={item.videoPoster ?? item.cover.src} vertical />
+            </div>
+          )}
+          {item.videoEmbed && !item.videoVertical && (
             <div className="mt-8">
               <VideoEmbed src={item.videoEmbed} title={`${item.title}: ${item.client}`} poster={item.videoPoster ?? item.cover.src} />
             </div>

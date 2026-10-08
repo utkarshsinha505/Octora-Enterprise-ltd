@@ -53,8 +53,10 @@ export type WorkItem = {
   liveUrl?: string;
   /** Button text for `liveUrl` (default "Visit live site"), e.g. "Watch on YouTube" */
   liveLabel?: string;
-  /** Still image shown on the video player before it is played (16:9); defaults to the cover */
+  /** Still image shown on the video player before it is played (16:9, or 9:16 when `videoVertical`); defaults to the cover */
   videoPoster?: string;
+  /** Show `videoEmbed` in a vertical 9:16 player (YouTube Shorts, Reels) */
+  videoVertical?: boolean;
   /** Optional "how it works" table shown on the case-study page */
   architecture?: { phase: string; method: string; advantage: string }[];
   /** Optional YouTube/Vimeo embed URL, e.g. https://www.youtube-nocookie.com/embed/VIDEO_ID */

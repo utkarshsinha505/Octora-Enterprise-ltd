@@ -91,7 +91,7 @@ export const hero = {
   headline: "Create Beyond Reality.",
   subtext:
     "We turn ideas into AI reels, original AI songs, ad films and stories that feel impossible, and build the websites that bring them home.",
-  chips: ["AI Reels", "AI Songs", "AI Ad Films", "AI Storytelling", "Websites"],
+  chips: ["AI Reels/Shorts", "AI Songs", "AI Ad Films", "AI Storytelling", "Websites"],
   /**
    * Hero media. If `video` is set, a looping muted showreel plays.
    * Otherwise the "reality → synthetic" morph animates between the two images.
@@ -182,8 +182,8 @@ export const finalCta = {
 export const services: Service[] = [
   {
     id: "ai-reels",
-    title: "AI Reels",
-    shortTitle: "AI Reels",
+    title: "AI Reels/Shorts",
+    shortTitle: "AI Reels/Shorts",
     summary: "Vertical, scroll-stopping reels for Instagram, YouTube Shorts and TikTok, made in days, not weeks.",
     intro:
       "Short-form is where attention lives. We create AI-powered reels that hook in the first second, carry your brand look, and come in batches so you can post consistently and test what works.",
@@ -375,32 +375,40 @@ export const work: WorkItem[] = [
     gallery: [],
   },
   {
-    slug: "neon-bazaar",
-    title: "Neon Bazaar",
-    client: "Kora Studio",
+    slug: "saturn-short",
+    title: "Saturn Is Way More Insane Than You Think",
+    client: "UPÉ FactVerse · YouTube Shorts",
     category: "ai-reels",
-    year: "2025",
+    year: "2026",
     featured: true,
-    summary: "A 12-reel series placing a streetwear drop inside a surreal, neon-lit night market.",
-    cover: { src: "/media/work/neon-bazaar/cover.webp", alt: "Glowing pink and cyan orbs floating above a dark street market" },
+    summary:
+      "A 51-second AI-powered YouTube Short on Saturn's rings and its mysterious moon Titan, made for our science channel, UPÉ FactVerse.",
+    cover: {
+      src: "/media/work/saturn-short/cover.webp",
+      alt: "A vertical frame from the Short: Saturn and its rings above Earth in deep space",
+    },
     challenge:
-      "Kora's new collection needed a month of daily-feeling content on a single campaign budget, with a look that would stand out in crowded fashion feeds.",
+      "Space facts are fascinating, but no camera can film Saturn up close. The challenge was to turn real astronomy into a vertical Short that stops the scroll in the first second, using AI to show what cameras can't, while being clear with viewers that the visuals are illustrative.",
     approach: [
-      "Built a reusable 'Neon Bazaar' world with signature colours, props and lighting.",
-      "Placed real product photos onto AI models walking through the market.",
-      "Cut 12 vertical reels with hook-first edits and trending audio structures.",
+      "Opened on a hook built for the feed: \"Did you know Saturn's rings aren't actually solid?\"",
+      "Packed the facts into under a minute: what the rings are made of (countless pieces of ice, rock and dust), Saturn's day and incredibly fast rotation, and Titan, with the possibility of an ocean beneath its icy surface.",
+      "Visualised every idea with AI-generated imagery and creative effects, framed for 9:16 vertical viewing.",
+      "Published with a clear AI disclosure: the visuals are illustrative, not actual footage of Saturn or Titan.",
+      "Closed on a question to the audience, \"Which Saturn fact surprised you the most?\", to start a conversation in the comments.",
     ],
-    tools: ["Kling", "Midjourney", "Photoshop", "CapCut", "Premiere Pro"],
+    tools: ["AI-generated visuals", "Scriptwriting", "Video editing", "YouTube Shorts"],
     results: [
-      { value: "+41%", label: "follower growth" },
-      { value: "5.6%", label: "average engagement rate" },
-      { value: "2x", label: "drop sell-through vs. last season" },
+      { value: "0:51", label: "runtime" },
+      { value: "9:16", label: "vertical, built for Shorts and Reels" },
     ],
-    resultSummary: "The drop sold out in nine days, and the Neon Bazaar world became Kora's seasonal visual identity.",
-    gallery: [
-      { src: "/media/work/neon-bazaar/still-1.webp", alt: "Still from Neon Bazaar: magenta lanterns in a night market" },
-      { src: "/media/work/neon-bazaar/still-2.webp", alt: "Still from Neon Bazaar: cyan reflections on wet pavement" },
-    ],
+    resultSummary:
+      "The Short is live on UPÉ FactVerse, our channel of mind-blowing facts about space, science, technology and the universe, made for education and entertainment.",
+    liveUrl: "https://youtube.com/shorts/3BA9QcaXymQ",
+    liveLabel: "Watch on YouTube",
+    videoEmbed: "https://www.youtube-nocookie.com/embed/3BA9QcaXymQ",
+    videoPoster: "/media/work/saturn-short/poster.webp",
+    videoVertical: true,
+    gallery: [],
   },
   {
     slug: "the-rise-of-the-undertaker",
@@ -537,6 +545,47 @@ export const work: WorkItem[] = [
       { src: "/media/work/lotus-avio/still-2.webp", alt: "Lotus Avio 'Selected work' section showcasing recent campaigns" },
     ],
   },
+  {
+    slug: "sonal-sinha-portfolio",
+    title: "Sonal Sinha Portfolio Website",
+    client: "Sonal Sinha · Linguist, IIT Jodhpur",
+    category: "websites",
+    year: "2026",
+    featured: false,
+    liveUrl: "https://sonal-sinha.vercel.app/",
+    summary:
+      "A clean, multi-page academic portfolio for linguist and IIT Jodhpur PhD scholar Sonal Sinha, built with Next.js and live on Vercel for everyone to see.",
+    cover: {
+      src: "/media/work/sonal-sinha-portfolio/cover.webp",
+      alt: "The Sonal Sinha portfolio homepage: her name, PhD in Linguistics at IIT Jodhpur, research interests and a portrait",
+    },
+    challenge:
+      "Sonal's work spans formal syntax, annotated speech corpora, treebanks and field-data tools, alongside publications, conference talks and reviewing. She needed one professional home on the web where academics and collaborators could see all of it at a glance, dig into the details and download her résumé.",
+    approach: [
+      "Designed an editorial, academic look: serif headings, monospace labels and generous white space that let the research speak for itself.",
+      "Built a homepage that sums up the record at a glance: research interests, highlights (GATE 2022 AIR 24, 4 publications, 7 conference talks, 3× ComputEL reviewer) and her latest talks and publication.",
+      "Gave each part of the record its own page: Education, Experience, Research, Service, Skills and Contact.",
+      "Added a \"Work by interest\" filter, so visitors can pick a research area and see the matching papers, talks and projects.",
+      "Built it with Next.js and deployed it on Vercel, with a one-click résumé download, email, LinkedIn and GitHub links, and a layout that works on any phone.",
+    ],
+    tools: ["Next.js", "Vercel", "Responsive design"],
+    results: [
+      { value: "6", label: "section pages, plus the homepage" },
+      { value: "Live", label: "on Vercel, open to everyone" },
+    ],
+    resultSummary:
+      "The portfolio is live at sonal-sinha.vercel.app, giving Sonal a single professional link to share with universities, conferences and collaborators.",
+    gallery: [
+      {
+        src: "/media/work/sonal-sinha-portfolio/still-1.webp",
+        alt: "Portfolio highlights (GATE 2022 AIR 24, 4 publications, 7 conference talks) and the 'Around the site' section cards",
+      },
+      {
+        src: "/media/work/sonal-sinha-portfolio/still-2.webp",
+        alt: "Recent conference talks and the latest publication on the portfolio homepage",
+      },
+    ],
+  },
 
 ];
 
@@ -566,7 +615,7 @@ export const story = {
 };
 
 export const timeline: TimelineEntry[] = [
-  { year: "2026", title: "UPÉ is founded", description: "Utkarsh Sinha and Pratham Srivastava launch UPÉ Synthetic Limited as an AI-first creative studio, with Sonal Sinha joining as Senior Advisor." },
+  { year: "2026", title: "UPÉ is founded", description: "Utkarsh Sinha and Pratham Srivastava launch UPÉ Synthetic Limited as an AI-first creative studio." },
   { year: "2026", title: "Truth Lens goes live", description: "Our first in-house product: a news verifier that checks stories segment by segment, natively in English and Hindi." },
   { year: "2026", title: "First client website", description: "We take on the Lotus Avio official website, handling its maintenance, security and content updates." },
   { year: "Next", title: "Beyond reality", description: "We plan to grow our portfolio of AI reels, songs, ad films and stories, and build more products of our own." },
@@ -683,38 +732,28 @@ export const leadership = {
   },
 };
 
-// PLACEHOLDER core team: replace names, bios and photos with your real team.
+// Core team: shown on /about/leadership under the co-founders. The "Core team" section stays hidden while this list is empty.
+// To add someone, copy this example inside the brackets and fill it in (photo: a 4:5 portrait in public/media/team/):
+//   {
+//     name: "Full Name",
+//     role: "Role / Title",
+//     bio: "One or two sentences about what they do at UPÉ.",
+//     photo: { src: "/media/team/full-name.webp", alt: "Portrait of Full Name, Role at UPÉ Synthetic Limited" },
+//   },
 export const team: TeamMember[] = [
   {
-    name: "Sonal Sinha",
-    role: "Senior Advisor",
-    // short role description; replace with Sonal's own bio when available
-    bio: "Senior Advisor to UPÉ Synthetic Limited, guiding the leadership team on the company's strategy and growth.",
-    photo: { src: "/media/team/sonal-sinha.webp", alt: "Portrait of Sonal Sinha, Senior Advisor to UPÉ Synthetic Limited" },
+    name: "Shashwat Sinha",
+    role: "Senior Advisor · Music",
+    // short role description; replace with Shashwat's own bio when available
+    bio: "Senior Advisor to UPÉ Synthetic Limited, bringing his expertise in music to guide the studio's AI songs, soundtracks and sound.",
+    photo: { src: "/media/team/shashwat-sinha.webp", alt: "Portrait of Shashwat Sinha, Senior Advisor (Music) at UPÉ Synthetic Limited" },
   },
   {
-    name: "[Team Member Name]",
-    role: "Head of Design",
-    bio: "Shapes the visual language of every campaign and website, from moodboards to the final colour grade.",
-    photo: { src: "/media/team/creative-director.webp", alt: "Portrait of UPÉ's head of design" },
-  },
-  {
-    name: "[Team Member Name]",
-    role: "Head of Production",
-    bio: "Keeps every project on time and on brief, managing AI pipelines, editors and delivery across formats.",
-    photo: { src: "/media/team/head-of-production.webp", alt: "Portrait of UPÉ's head of production" },
-  },
-  {
-    name: "[Team Member Name]",
-    role: "Music & Sound Lead",
-    bio: "A producer and songwriter who blends AI composition with real instruments and vocals for every UPÉ track.",
-    photo: { src: "/media/team/music-lead.webp", alt: "Portrait of UPÉ's music and sound lead" },
-  },
-  {
-    name: "[Team Member Name]",
-    role: "Technology Lead",
-    bio: "Builds UPÉ's websites and internal AI tooling, making sure everything we ship is fast, secure and easy to update.",
-    photo: { src: "/media/team/tech-lead.webp", alt: "Portrait of UPÉ's technology lead" },
+    name: "Aditya Bharadwaj",
+    role: "Content & Cinematic Writer",
+    // short role description; replace with Aditya's own bio when available
+    bio: "Writes the scripts, stories and screenplays behind UPÉ's AI films, reels and ad campaigns, giving every project a strong narrative and a cinematic voice.",
+    photo: { src: "/media/team/aditya-bharadwaj.webp", alt: "Portrait of Aditya Bharadwaj, Content & Cinematic Writer at UPÉ Synthetic Limited" },
   },
 ];
 

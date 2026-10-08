@@ -47,7 +47,7 @@ export default async function OpengraphImage() {
           </span>
         </div>
         <div style={{ marginTop: 18, fontSize: 24, color: "#a3a3b8" }}>
-          AI Reels · AI Songs · AI Ad Films · AI Storytelling · Websites
+          AI Reels/Shorts · AI Songs · AI Ad Films · AI Storytelling · Websites
         </div>
       </div>
     ),

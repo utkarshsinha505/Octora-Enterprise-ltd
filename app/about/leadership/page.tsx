@@ -153,29 +153,34 @@ export default function LeadershipPage() {
             ))}
           </ul>
 
-          <h3 className="mt-16 text-2xl font-bold md:text-3xl">Core team</h3>
-          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {team.map((member, i) => (
-              <Reveal as="li" key={member.role} delay={(i % 4) * 0.08}>
-                <article className="group glow-border relative flex h-full flex-col overflow-hidden rounded-3xl glass">
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image
-                      src={member.photo.src}
-                      alt={member.photo.alt}
-                      fill
-                      sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="flex-1 p-6">
-                    <h4 className="text-lg font-bold">{member.name}</h4>
-                    <p className="mt-1 text-sm font-semibold text-gradient">{member.role}</p>
-                    <p className="mt-3 text-sm text-muted">{member.bio}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </ul>
+          {/* hidden until members are added to `team` in data/site.ts */}
+          {team.length > 0 && (
+            <>
+              <h3 className="mt-16 text-2xl font-bold md:text-3xl">Core team</h3>
+              <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {team.map((member, i) => (
+                  <Reveal as="li" key={member.name + member.role} delay={(i % 4) * 0.08}>
+                    <article className="group glow-border relative flex h-full flex-col overflow-hidden rounded-3xl glass">
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <Image
+                          src={member.photo.src}
+                          alt={member.photo.alt}
+                          fill
+                          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                      </div>
+                      <div className="flex-1 p-6">
+                        <h4 className="text-lg font-bold">{member.name}</h4>
+                        <p className="mt-1 text-sm font-semibold text-gradient">{member.role}</p>
+                        <p className="mt-3 text-sm text-muted">{member.bio}</p>
+                      </div>
+                    </article>
+                  </Reveal>
+                ))}
+              </ul>
+            </>
+          )}
         </div>
       </section>
 
