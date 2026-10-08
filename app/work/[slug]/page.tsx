@@ -55,7 +55,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           <p className="mt-6 max-w-2xl text-lg text-muted md:text-xl">{item.summary}</p>
           {item.liveUrl && (
             <ButtonLink href={item.liveUrl} external className="mt-8">
-              Visit live site <Icon name="arrowUpRight" size={18} />
+              {item.liveLabel ?? "Visit live site"} <Icon name="arrowUpRight" size={18} />
               <span className="sr-only"> (opens in a new tab)</span>
             </ButtonLink>
           )}
@@ -88,7 +88,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
               </div>
               {item.liveUrl && (
                 <div className="col-span-2 lg:col-span-1">
-                  <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Live site</dt>
+                  <dt className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">{item.videoEmbed ? "Watch" : "Live site"}</dt>
                   <dd className="mt-1 font-semibold">
                     <a href={item.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 break-all hover:text-cyan">
                       {item.liveUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
@@ -195,21 +195,23 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
       {/* Gallery / video */}
       <section aria-labelledby="gallery-title" className="cv-auto py-12 md:py-16">
         <div className="container-x">
-          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">Gallery</h2>
+          <h2 id="gallery-title" className="text-2xl font-bold md:text-3xl">{item.gallery.length ? "Gallery" : "Watch the episode"}</h2>
           {item.videoEmbed && (
             <div className="mt-8">
-              <VideoEmbed src={item.videoEmbed} title={`${item.title}: ${item.client}`} poster={item.cover.src} />
+              <VideoEmbed src={item.videoEmbed} title={`${item.title}: ${item.client}`} poster={item.videoPoster ?? item.cover.src} />
             </div>
           )}
-          <ul className="mt-8 grid gap-6 md:grid-cols-2">
-            {item.gallery.map((g) => (
-              <Reveal as="li" key={g.src}>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-line">
-                  <Image src={g.src} alt={g.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
-                </div>
-              </Reveal>
-            ))}
-          </ul>
+          {item.gallery.length > 0 && (
+            <ul className="mt-8 grid gap-6 md:grid-cols-2">
+              {item.gallery.map((g) => (
+                <Reveal as="li" key={g.src}>
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-3xl border border-line">
+                    <Image src={g.src} alt={g.alt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                  </div>
+                </Reveal>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
 

@@ -36,6 +36,8 @@ function renderEmail(d: ContactData) {
 }
 
 export async function POST(request: Request) {
+  if (!site.features.contact) return Response.json({ ok: false, error: "Not found." }, { status: 404 });
+
   let body: unknown;
   try {
     body = await request.json();

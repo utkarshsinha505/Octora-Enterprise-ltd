@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { nav } from "@/data/site";
+import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
@@ -186,11 +186,13 @@ export function Header() {
 
         <div className="flex items-center gap-2 md:gap-3">
           <ThemeToggle />
-          <div className="hidden sm:block">
-            <ButtonLink href="/contact" size="sm">
-              Let&apos;s talk
-            </ButtonLink>
-          </div>
+          {site.features.contact && (
+            <div className="hidden sm:block">
+              <ButtonLink href="/contact" size="sm">
+                Let&apos;s talk
+              </ButtonLink>
+            </div>
+          )}
           <button
             ref={toggleRef}
             type="button"
@@ -245,10 +247,12 @@ export function Header() {
               </li>
             ))}
           </ul>
-          <ButtonLink href="/contact" size="lg" className="mt-auto w-full">
-            Let&apos;s talk
-            <Icon name="arrowRight" size={18} />
-          </ButtonLink>
+          {site.features.contact && (
+            <ButtonLink href="/contact" size="lg" className="mt-auto w-full">
+              Let&apos;s talk
+              <Icon name="arrowRight" size={18} />
+            </ButtonLink>
+          )}
         </nav>
       </div>
     </header>

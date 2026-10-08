@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { hero } from "@/data/site";
+import { hero, site } from "@/data/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { MotionToggle } from "@/components/layout/MotionToggle";
@@ -98,9 +98,11 @@ export function Hero() {
           </h1>
           <p className="mt-6 max-w-xl text-lg text-muted md:text-xl">{hero.subtext}</p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <ButtonLink href="/contact" size="lg">
-              Let&apos;s talk <Icon name="arrowRight" size={18} className="transition-transform group-hover:translate-x-1" />
-            </ButtonLink>
+            {site.features.contact && (
+              <ButtonLink href="/contact" size="lg">
+                Let&apos;s talk <Icon name="arrowRight" size={18} className="transition-transform group-hover:translate-x-1" />
+              </ButtonLink>
+            )}
             <ButtonLink href="/work" variant="secondary" size="lg">
               <Icon name="play" size={14} /> See our work
             </ButtonLink>

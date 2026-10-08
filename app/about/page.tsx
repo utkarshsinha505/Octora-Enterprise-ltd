@@ -11,7 +11,7 @@ import { FinalCta, StatsBand } from "@/components/home/HomeSections";
 export const metadata = pageMetadata({
   title: "Our Story",
   description:
-    "How UPÉ Synthetic Limited went from late-night AI experiments to an AI-first creative studio for brands, studios, creators and schools.",
+    "The story of UPÉ Synthetic Limited, an AI-first creative studio launched in 2026 for brands, studios, creators and schools.",
   path: "/about",
 });
 
@@ -36,7 +36,7 @@ export default function AboutPage() {
           <Reveal className="lg:col-span-4">
             <h2 id="story-title" className="text-3xl font-bold md:text-4xl">Our story</h2>
             <p className="mt-4 text-muted">
-              Est. {site.foundedYear} · {site.city}
+              Est. {site.foundedYear}
             </p>
           </Reveal>
           <Reveal delay={0.1} className="space-y-6 text-lg text-muted lg:col-span-8">
@@ -67,7 +67,7 @@ export default function AboutPage() {
       <Section id="timeline" eyebrow="Timeline" title="The journey so far.">
         <ol className="relative border-l border-line pl-8 md:ml-4 md:pl-12">
           {timeline.map((t, i) => (
-            <Reveal as="li" key={t.year} delay={i * 0.06} className="relative pb-12 last:pb-0">
+            <Reveal as="li" key={t.title} delay={i * 0.06} className="relative pb-12 last:pb-0">
               <span aria-hidden="true" className="absolute top-1.5 -left-[calc(2rem+7px)] size-3.5 rounded-full bg-accent ring-4 ring-bg md:-left-[calc(3rem+7px)]" />
               <p className="font-display text-sm font-bold text-gradient">{t.year}</p>
               <h3 className="mt-2 text-xl font-bold md:text-2xl">{t.title}</h3>

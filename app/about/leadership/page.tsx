@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { cofounders, leadership, team } from "@/data/site";
+import { cofounders, leadership, site, team } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 import { AboutNav } from "@/components/about/AboutNav";
 import { ButtonLink, buttonClasses } from "@/components/ui/Button";
@@ -180,48 +180,50 @@ export default function LeadershipPage() {
       </section>
 
       {/* Work with us */}
-      <section aria-labelledby="work-with-us-title" className="cv-auto py-20 md:py-28 [contain-intrinsic-size:auto_700px]">
-        <div className="container-x">
-          <Reveal className="relative overflow-hidden rounded-[2.5rem] border border-line px-6 py-16 text-center md:px-16 md:py-24">
-            <div aria-hidden="true" className="absolute inset-0 bg-accent opacity-[0.16]" />
-            <div aria-hidden="true" className="glow-orb glow-violet absolute -top-56 left-1/2 size-[44rem] -translate-x-1/2 rounded-full opacity-50" />
-            <div className="relative">
-              <h2 id="work-with-us-title" className="mx-auto max-w-3xl text-4xl font-bold md:text-6xl">
-                {workWithUs.title}
-              </h2>
-              <p className="mx-auto mt-6 max-w-xl text-lg text-fg/80">{workWithUs.text}</p>
-              <div className="mt-10 flex flex-wrap justify-center gap-3">
+      {site.features.contact && (
+        <section aria-labelledby="work-with-us-title" className="cv-auto py-20 md:py-28 [contain-intrinsic-size:auto_700px]">
+          <div className="container-x">
+            <Reveal className="relative overflow-hidden rounded-[2.5rem] border border-line px-6 py-16 text-center md:px-16 md:py-24">
+              <div aria-hidden="true" className="absolute inset-0 bg-accent opacity-[0.16]" />
+              <div aria-hidden="true" className="glow-orb glow-violet absolute -top-56 left-1/2 size-[44rem] -translate-x-1/2 rounded-full opacity-50" />
+              <div className="relative">
+                <h2 id="work-with-us-title" className="mx-auto max-w-3xl text-4xl font-bold md:text-6xl">
+                  {workWithUs.title}
+                </h2>
+                <p className="mx-auto mt-6 max-w-xl text-lg text-fg/80">{workWithUs.text}</p>
+                <div className="mt-10 flex flex-wrap justify-center gap-3">
+                  {contact?.email && (
+                    <a href={`mailto:${contact.email}`} className={buttonClasses("primary", "lg")}>
+                      <Icon name="mail" size={18} /> Email {contact.name.split(" ")[0]}
+                    </a>
+                  )}
+                  {contact?.links?.map((l) => (
+                    <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={buttonClasses("secondary", "lg")}>
+                      Connect on {l.label} <Icon name="arrowUpRight" size={16} />
+                      <span className="sr-only">: {contact.name} (opens in a new tab)</span>
+                    </a>
+                  ))}
+                  <ButtonLink href="/contact" variant="secondary" size="lg">
+                    Send a brief <Icon name="arrowRight" size={18} />
+                  </ButtonLink>
+                </div>
                 {contact?.email && (
-                  <a href={`mailto:${contact.email}`} className={buttonClasses("primary", "lg")}>
-                    <Icon name="mail" size={18} /> Email {contact.name.split(" ")[0]}
-                  </a>
+                  <p className="mt-6 text-sm text-muted">
+                    Or write to{" "}
+                    <a
+                      href={`mailto:${contact.email}`}
+                      className="inline-block font-semibold [overflow-wrap:anywhere] text-fg underline-offset-4 hover:underline"
+                    >
+                      {contact.email.split("@")[0]}
+                      <wbr />@{contact.email.split("@")[1]}
+                    </a>
+                  </p>
                 )}
-                {contact?.links?.map((l) => (
-                  <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className={buttonClasses("secondary", "lg")}>
-                    Connect on {l.label} <Icon name="arrowUpRight" size={16} />
-                    <span className="sr-only">: {contact.name} (opens in a new tab)</span>
-                  </a>
-                ))}
-                <ButtonLink href="/contact" variant="secondary" size="lg">
-                  Send a brief <Icon name="arrowRight" size={18} />
-                </ButtonLink>
               </div>
-              {contact?.email && (
-                <p className="mt-6 text-sm text-muted">
-                  Or write to{" "}
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="inline-block font-semibold [overflow-wrap:anywhere] text-fg underline-offset-4 hover:underline"
-                  >
-                    {contact.email.split("@")[0]}
-                    <wbr />@{contact.email.split("@")[1]}
-                  </a>
-                </p>
-              )}
-            </div>
-          </Reveal>
-        </div>
-      </section>
+            </Reveal>
+          </div>
+        </section>
+      )}
     </>
   );
 }

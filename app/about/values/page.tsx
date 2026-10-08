@@ -1,4 +1,4 @@
-import { culture, values } from "@/data/site";
+import { culture, site, values } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 import { AboutNav } from "@/components/about/AboutNav";
 import { ButtonLink } from "@/components/ui/Button";
@@ -56,15 +56,17 @@ export default function ValuesPage() {
             </Reveal>
           ))}
         </ul>
-        <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 rounded-[2rem] border border-line p-8 md:flex-row md:items-center md:p-10">
-          <div>
-            <h3 className="text-2xl font-bold">Want to create with us?</h3>
-            <p className="mt-2 text-muted">We&apos;re always happy to meet talented artists, editors, musicians and developers.</p>
-          </div>
-          <ButtonLink href="/contact" variant="secondary">
-            Get in touch <Icon name="arrowRight" size={18} />
-          </ButtonLink>
-        </Reveal>
+        {site.features.contact && (
+          <Reveal className="mt-12 flex flex-col items-start justify-between gap-6 rounded-[2rem] border border-line p-8 md:flex-row md:items-center md:p-10">
+            <div>
+              <h3 className="text-2xl font-bold">Want to create with us?</h3>
+              <p className="mt-2 text-muted">We&apos;re always happy to meet talented artists, editors, musicians and developers.</p>
+            </div>
+            <ButtonLink href="/contact" variant="secondary">
+              Get in touch <Icon name="arrowRight" size={18} />
+            </ButtonLink>
+          </Reveal>
+        )}
       </Section>
 
       <FinalCta />

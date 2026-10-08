@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { contactPage, site } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 import { mailHref, mapHref, telHref, whatsappHref } from "@/lib/utils";
@@ -7,7 +8,7 @@ import { PageHero } from "@/components/ui/PageHero";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description: `Start a project with UPÉ. Call, email or WhatsApp our ${site.city} studio, or send us your brief through the form.`,
+  description: `Start a project with UPÉ. Call, email or WhatsApp our studio, or send us your brief through the form.`,
   path: "/contact",
 });
 
@@ -19,6 +20,7 @@ const channels: { icon: IconName; label: string; value: string; href: string; ex
 ];
 
 export default function ContactPage() {
+  if (!site.features.contact) notFound();
   return (
     <>
       <PageHero eyebrow="Contact" title={contactPage.title} intro={contactPage.intro} />

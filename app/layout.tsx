@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: { default: `${site.shortName}: ${site.tagline}`, template: `%s | ${site.shortName}` },
   description: site.description,
   applicationName: site.name,
-  keywords: ["AI creative studio", "AI reels", "AI songs", "AI ad films", "AI storytelling", "website design", "synthetic media", site.city],
+  keywords: ["AI creative studio", "AI reels", "AI songs", "AI ad films", "AI storytelling", "website design", "synthetic media"],
   openGraph: { type: "website", siteName: site.name, locale: "en_US" },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
@@ -39,9 +39,11 @@ const organizationJsonLd = {
   slogan: site.tagline,
   url: site.url,
   logo: `${site.url}/brand/upe-logo.png`,
-  email: site.contact.email,
-  telephone: site.contact.phone,
-  address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: site.country },
+  ...(site.features.contact && {
+    email: site.contact.email,
+    telephone: site.contact.phone,
+    address: { "@type": "PostalAddress", streetAddress: site.contact.address, addressLocality: site.city, addressCountry: site.country },
+  }),
   sameAs: site.social.map((s) => s.href),
   ...(namedCofounders.length > 0 && {
     founder: namedCofounders.map((c) => ({
@@ -72,7 +74,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <script dangerouslySetInnerHTML={{ __html: revealScript }} />
-        <WhatsAppButton />
+        {site.features.contact && <WhatsAppButton />}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
       </body>
     </html>

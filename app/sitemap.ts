@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { work } from "@/data/site";
+import { site, work } from "@/data/site";
 import { absoluteUrl } from "@/lib/utils";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/about", priority: 0.7 },
     { path: "/about/leadership", priority: 0.6 },
     { path: "/about/values", priority: 0.6 },
-    { path: "/contact", priority: 0.8 },
+    ...(site.features.contact ? [{ path: "/contact", priority: 0.8 }] : []),
   ];
   return [
     ...pages.map((p) => ({ url: absoluteUrl(p.path), lastModified: now, changeFrequency: "monthly" as const, priority: p.priority })),

@@ -29,7 +29,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8">
+          <div className={`grid gap-10 lg:col-span-8 ${site.features.contact ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
             <div>
               <h2 className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Explore</h2>
               <ul className="mt-4 space-y-3 text-sm">
@@ -51,38 +51,42 @@ export function Footer() {
                 ))}
               </ul>
             </div>
-            <div>
-              <h2 className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Get in touch</h2>
-              <address className="mt-4 space-y-3 text-sm not-italic">
-                <a href={telHref} className="flex items-start gap-3 hover:text-cyan">
-                  <Icon name="phone" size={16} className="mt-0.5 shrink-0 text-muted" />
-                  {site.contact.phone}
-                </a>
-                <a href={mailHref} className="flex items-start gap-3 break-all hover:text-cyan">
-                  <Icon name="mail" size={16} className="mt-0.5 shrink-0 text-muted" />
-                  {site.contact.email}
-                </a>
-                <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-cyan">
-                  <Icon name="whatsapp" size={16} className="mt-0.5 shrink-0 text-muted" />
-                  WhatsApp us
-                </a>
-                <a href={mapHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-cyan">
-                  <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-muted" />
-                  {site.contact.address}
-                </a>
-              </address>
-            </div>
+            {site.features.contact && (
+              <div>
+                <h2 className="text-xs font-semibold tracking-[0.2em] text-muted uppercase">Get in touch</h2>
+                <address className="mt-4 space-y-3 text-sm not-italic">
+                  <a href={telHref} className="flex items-start gap-3 hover:text-cyan">
+                    <Icon name="phone" size={16} className="mt-0.5 shrink-0 text-muted" />
+                    {site.contact.phone}
+                  </a>
+                  <a href={mailHref} className="flex items-start gap-3 break-all hover:text-cyan">
+                    <Icon name="mail" size={16} className="mt-0.5 shrink-0 text-muted" />
+                    {site.contact.email}
+                  </a>
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-cyan">
+                    <Icon name="whatsapp" size={16} className="mt-0.5 shrink-0 text-muted" />
+                    WhatsApp us
+                  </a>
+                  <a href={mapHref} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 hover:text-cyan">
+                    <Icon name="pin" size={16} className="mt-0.5 shrink-0 text-muted" />
+                    {site.contact.address}
+                  </a>
+                </address>
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-start justify-between gap-6 rounded-3xl glass p-6 sm:flex-row sm:items-center md:p-8">
-          <p className="font-display text-xl font-semibold md:text-2xl">
-            Got an idea? <span className="text-gradient">Let&apos;s make it real.</span>
-          </p>
-          <ButtonLink href="/contact">
-            Let&apos;s talk <Icon name="arrowRight" size={18} />
-          </ButtonLink>
-        </div>
+        {site.features.contact && (
+          <div className="mt-14 flex flex-col items-start justify-between gap-6 rounded-3xl glass p-6 sm:flex-row sm:items-center md:p-8">
+            <p className="font-display text-xl font-semibold md:text-2xl">
+              Got an idea? <span className="text-gradient">Let&apos;s make it real.</span>
+            </p>
+            <ButtonLink href="/contact">
+              Let&apos;s talk <Icon name="arrowRight" size={18} />
+            </ButtonLink>
+          </div>
+        )}
 
         <div className="mt-10 flex flex-col gap-4 border-t border-line pt-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} {site.name}. All rights reserved.</p>

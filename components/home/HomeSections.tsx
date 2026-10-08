@@ -6,6 +6,7 @@ import {
   cofounders,
   finalCta,
   services,
+  site,
   stats,
   steps,
   testimonials,
@@ -21,6 +22,7 @@ import { WorkCard } from "@/components/work/WorkCard";
 
 /* 2 ─ Trusted by */
 export function TrustedBy() {
+  if (clientLogos.length === 0) return null;
   return (
     <section aria-label="Trusted by" className="cv-auto border-y border-line py-10 [contain-intrinsic-size:auto_200px]">
       <p className="mb-8 px-5 text-center text-xs font-semibold tracking-[0.25em] text-muted uppercase">
@@ -228,6 +230,7 @@ export function TeamSpotlight() {
 
 /* 9 ─ Testimonials */
 export function Testimonials() {
+  if (testimonials.length === 0) return null;
   return (
     <Section id="testimonials" eyebrow="Kind words" title="What our clients say.">
       <ul className="grid gap-5 lg:grid-cols-3">
@@ -252,6 +255,7 @@ export function Testimonials() {
 
 /* 10 ─ Final CTA */
 export function FinalCta() {
+  if (!site.features.contact) return null;
   return (
     <section aria-labelledby="cta-title" className="cv-auto py-20 md:py-28 [contain-intrinsic-size:auto_700px]">
       <div className="container-x">

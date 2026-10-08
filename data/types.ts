@@ -49,6 +49,10 @@ export type WorkItem = {
   gallery: Media[];
   /** Optional link to the live product/site, shown as a "Visit live site" button */
   liveUrl?: string;
+  /** Button text for `liveUrl` (default "Visit live site"), e.g. "Watch on YouTube" */
+  liveLabel?: string;
+  /** Still image shown on the video player before it is played (16:9); defaults to the cover */
+  videoPoster?: string;
   /** Optional "how it works" table shown on the case-study page */
   architecture?: { phase: string; method: string; advantage: string }[];
   /** Optional YouTube/Vimeo embed URL, e.g. https://www.youtube-nocookie.com/embed/VIDEO_ID */

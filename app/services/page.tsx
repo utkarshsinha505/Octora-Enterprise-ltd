@@ -1,4 +1,4 @@
-import { serviceFaqs, services } from "@/data/site";
+import { serviceFaqs, services, site } from "@/data/site";
 import { pageMetadata } from "@/lib/seo";
 import { Accordion } from "@/components/ui/Accordion";
 import { ButtonLink } from "@/components/ui/Button";
@@ -97,11 +97,13 @@ export default function ServicesPage() {
                     </dt>
                     <dd className="text-sm font-semibold">{s.turnaround}</dd>
                   </dl>
-                  <div className="mt-8">
-                    <ButtonLink href={`/contact?service=${s.id}`}>
-                      {s.cta} <Icon name="arrowRight" size={18} />
-                    </ButtonLink>
-                  </div>
+                  {site.features.contact && (
+                    <div className="mt-8">
+                      <ButtonLink href={`/contact?service=${s.id}`}>
+                        {s.cta} <Icon name="arrowRight" size={18} />
+                      </ButtonLink>
+                    </div>
+                  )}
                 </div>
                 <div className="grid gap-8 sm:grid-cols-2 lg:col-span-7 lg:border-l lg:border-line lg:pl-12">
                   <List title="What you get" items={s.whatYouGet} />

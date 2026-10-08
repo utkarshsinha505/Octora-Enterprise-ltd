@@ -39,7 +39,7 @@ export const site = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://upe-synthetic.vercel.app",
   city: "[City]",
   country: "[Country]",
-  foundedYear: 2023,
+  foundedYear: 2026,
   contact: {
     // PLACEHOLDER contact details: replace all four.
     phone: "+00 00000 00000",
@@ -50,6 +50,14 @@ export const site = {
     address: "[Street address], [City], [Country]",
     /** Leave empty to auto-generate a Google Maps search link from the address. */
     mapUrl: "",
+  },
+  /**
+   * Feature switches. `contact: false` temporarily hides every contact touchpoint:
+   * the Contact page and form, "Let's talk" buttons, footer "Get in touch", WhatsApp button and contact CTAs.
+   * Set it back to `true` to restore them all.
+   */
+  features: {
+    contact: false,
   },
   social: [
     { label: "Instagram", href: "https://instagram.com/" },
@@ -72,13 +80,13 @@ export const nav = [
       { label: "Values & Culture", href: "/about/values", description: "What we stand for, and how we work" },
     ],
   },
-  { label: "Contact", href: "/contact" },
+  ...(site.features.contact ? [{ label: "Contact", href: "/contact" }] : []),
 ];
 
 /* ─────────────────────────── Home ────────────────────────── */
 
 export const hero = {
-  eyebrow: `${site.city} · AI Creative Studio`,
+  eyebrow: "AI Creative Studio · Launched 2026",
   headline: "Create Beyond Reality.",
   subtext:
     "We turn ideas into AI reels, original AI songs, ad films and stories that feel impossible, and build the websites that bring them home.",
@@ -96,22 +104,17 @@ export const hero = {
   },
 };
 
-// PLACEHOLDER client logos: swap for real clients with permission.
-export const clientLogos: ClientLogo[] = [
-  { src: "/media/logos/northbound.svg", alt: "Northbound Pictures", width: 260, height: 48 },
-  { src: "/media/logos/kora.svg", alt: "Kora Studio", width: 260, height: 48 },
-  { src: "/media/logos/voltra.svg", alt: "Voltra Motors", width: 260, height: 48 },
-  { src: "/media/logos/saffron-leaf.svg", alt: "Saffron Leaf Tea", width: 260, height: 48 },
-  { src: "/media/logos/lumen-labs.svg", alt: "Lumen Labs", width: 260, height: 48 },
-  { src: "/media/logos/atlas.svg", alt: "Atlas & Co", width: 260, height: 48 },
-];
+// Client logos for the "Trusted by" marquee. The section stays hidden while this is empty.
+// Add real clients here (with permission), e.g.
+// { src: "/media/logos/your-client.svg", alt: "Client name", width: 260, height: 48 },
+export const clientLogos: ClientLogo[] = [];
 
-// PLACEHOLDER numbers: update with real figures.
+// Honest launch-stage numbers. Update as UPÉ grows (avoid years: values are formatted with commas).
 export const stats: Stat[] = [
-  { value: 120, suffix: "+", label: "Projects delivered" },
-  { value: 450, suffix: "+", label: "AI reels produced" },
-  { value: 35, suffix: "+", label: "Websites launched" },
-  { value: 60, suffix: "+", label: "Brands served" },
+  { value: 5, label: "Creative services" },
+  { value: 2, label: "Live projects" },
+  { value: 2, label: "Languages in Truth Lens" },
+  { value: 2, label: "Co-founders" },
 ];
 
 export const audiences: Audience[] = [
@@ -164,31 +167,13 @@ export const steps: Step[] = [
   },
 ];
 
-// PLACEHOLDER testimonials: replace with real, attributable client quotes before launch.
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      "We briefed UPÉ on a Monday and had a 30-second festive film that looked like a full outdoor shoot by Friday. It became our best-performing ad of the year.",
-    name: "[Client Name]",
-    role: "Marketing Head, Saffron Leaf Tea",
-  },
-  {
-    quote:
-      "They wrote, produced and visualised our school anthem. Students sang it at annual day, and parents still share the video. Genuinely moving work.",
-    name: "[Client Name]",
-    role: "Principal, Sunrise Public School",
-  },
-  {
-    quote:
-      "UPÉ understands both the tech and the craft. Our pitch film got the green light, and the AI previs saved us weeks in pre-production.",
-    name: "[Client Name]",
-    role: "Producer, Northbound Pictures",
-  },
-];
+// Client testimonials. The home "Kind words" section stays hidden while this is empty.
+// Add only real, attributable quotes, e.g. { quote: "…", name: "Full Name", role: "Title, Company" }.
+export const testimonials: Testimonial[] = [];
 
 export const finalCta = {
   title: "Have a project in mind?",
-  text: "Tell us what you're imagining. We'll reply within one working day with ideas, a timeline and a clear quote.",
+  text: "We're newly launched and taking on our first projects. Tell us what you're imagining and we'll reply within one working day with ideas, a timeline and a clear quote.",
 };
 
 /* ───────────────────────── Services ──────────────────────── */
@@ -313,9 +298,9 @@ export const serviceFaqs: Faq[] = [
       "Two structured revision rounds are included in every project. Extra rounds are available if your scope changes.",
   },
   {
-    question: "Do you work with clients outside our city?",
+    question: "Do you work with clients in other cities or countries?",
     answer:
-      "Yes. Most of our work happens remotely over video calls and WhatsApp, so we work with clients anywhere.",
+      "Yes. We work remotely over video calls and WhatsApp, so we can collaborate with clients anywhere.",
   },
 ];
 
@@ -411,32 +396,38 @@ export const work: WorkItem[] = [
     ],
   },
   {
-    slug: "the-last-lighthouse",
-    title: "The Last Lighthouse",
-    client: "Northbound Pictures",
+    slug: "the-rise-of-the-undertaker",
+    title: "The Rise of The Undertaker",
+    client: "UPÉ Biography · YouTube series",
     category: "ai-storytelling",
-    year: "2024",
+    year: "2026",
     featured: true,
-    summary: "A six-minute AI short film used to pitch and green-light a feature-length project.",
-    cover: { src: "/media/work/the-last-lighthouse/cover.webp", alt: "A lone lighthouse sweeping its beam across a midnight sea" },
+    summary:
+      "Episode 1 of our AI-powered biography series: the story of Mark Calaway before he became WWE's Deadman.",
+    cover: {
+      src: "/media/work/the-rise-of-the-undertaker/cover.webp",
+      alt: "Artwork for The Undertaker, Episode 1: The Rise: a hooded figure in a graveyard under purple lightning",
+    },
     challenge:
-      "Northbound needed investors to feel the tone of a period drama set on a remote coast before any production money was spent.",
+      "Biographies of legendary personalities usually need archive footage, location shoots and a production crew. We set out to tell The Undertaker's story as a cinematic, episodic series built with AI, starting from the man behind the character: Mark Calaway.",
     approach: [
-      "Adapted three key scenes from the feature script into a six-minute narrative short.",
-      "Designed consistent characters, costumes and a storm-battered coastline.",
-      "Scored the film with an AI-assisted orchestral theme and professional narration.",
+      "Researched and scripted Episode 1, \"The Rise\", tracing Mark Calaway's early life and beginnings to the path that led him towards becoming The Undertaker.",
+      "Created the series' dark, cinematic look with AI-generated visuals: graveyards, storms and the hooded Deadman.",
+      "Edited the story into a tight four-minute episode built to keep viewers watching to the end.",
+      "Launched it as the first chapter of a multi-episode biography series on the UPÉ Biography YouTube channel.",
     ],
-    tools: ["Runway", "Flux", "ElevenLabs", "AIVA", "DaVinci Resolve"],
+    tools: ["AI-generated visuals", "Scriptwriting", "Video editing", "YouTube"],
     results: [
-      { value: "Green-lit", label: "feature funding secured" },
-      { value: "6 weeks", label: "of previs time saved" },
-      { value: "2", label: "festival selections" },
+      { value: "Episode 1", label: "of the biography series, now streaming" },
+      { value: "4:05", label: "runtime" },
     ],
-    resultSummary: "The short secured funding for the feature and now doubles as its official teaser.",
-    gallery: [
-      { src: "/media/work/the-last-lighthouse/still-1.webp", alt: "Still from The Last Lighthouse: the tower against a stormy sky" },
-      { src: "/media/work/the-last-lighthouse/still-2.webp", alt: "Still from The Last Lighthouse: the beam over the coastline" },
-    ],
+    resultSummary:
+      "Episode 1 is live on the UPÉ Biography YouTube channel and opens the series. The next chapters continue The Undertaker's journey of ambition, challenges, transformation and legacy.",
+    liveUrl: "https://youtu.be/RL-dMasuX3M",
+    liveLabel: "Watch on YouTube",
+    videoEmbed: "https://www.youtube-nocookie.com/embed/RL-dMasuX3M",
+    videoPoster: "/media/work/the-rise-of-the-undertaker/poster.webp",
+    gallery: [],
   },
   {
     slug: "truth-lens",
@@ -602,11 +593,11 @@ export const work: WorkItem[] = [
 
 export const story = {
   intro:
-    "UPÉ began with a simple question: what if a small team could create visuals that once needed a film crew, a recording studio and a six-figure budget?",
+    "UPÉ is a newly launched startup, founded in 2026 around a simple question: what if a small team could create visuals and sound that once needed a film crew, a recording studio and a six-figure budget?",
   paragraphs: [
-    "We started in 2023 as a handful of filmmakers, designers and developers who couldn't stop experimenting with generative AI. What began as late-night tests quickly turned into client work: first reels for local brands, then ad films, songs and full websites.",
-    "Today UPÉ Synthetic Limited is an AI-first creative studio. We combine the speed of AI with the judgement of experienced storytellers, so every project feels crafted, not generated.",
-    "The name says it all. UPÉ is about lifting ideas up and beyond what's practical to shoot. We create beyond reality, so our clients can imagine without limits.",
+    "Generative AI has reached the point where a single idea can become a film, a song or a story in days. Utkarsh Sinha and Pratham Srivastava started UPÉ Synthetic Limited in 2026 to put that power in the hands of brands, studios, creators and schools, with real craft and judgement behind every frame.",
+    "We're at the beginning, and we're building in the open. Our first in-house product, Truth Lens, verifies news in English and Hindi, and our first client website, for Lotus Avio, is live and looked after by us. Alongside them, we offer AI reels, AI songs, AI ad films, AI storytelling and website design and development.",
+    "The name says it all. UPÉ is about lifting ideas up and beyond what's practical to shoot. Our ambition is to become the studio people think of first when an idea feels impossible, so our clients can create beyond reality.",
   ],
   mission:
     "To make world-class creative production accessible to every brand, creator and institution, using AI responsibly to tell stories that move people.",
@@ -614,10 +605,10 @@ export const story = {
 };
 
 export const timeline: TimelineEntry[] = [
-  { year: "2023", title: "The experiment", description: "Founded as a small collective testing AI for film and music. First client reel goes viral locally." },
-  { year: "2024", title: "Studio mode", description: "Incorporated as UPÉ Synthetic Limited. Launched AI ad films, AI songs and website services." },
-  { year: "2025", title: "Scaling up", description: "Crossed 100 projects, partnered with production houses and schools, and grew the core team." },
-  { year: "Next", title: "Beyond reality", description: "Building original IP, AI series and tools that let every client co-create in real time." },
+  { year: "2026", title: "UPÉ is founded", description: "Utkarsh Sinha and Pratham Srivastava launch UPÉ Synthetic Limited as an AI-first creative studio, with Sonal Sinha joining as Senior Advisor." },
+  { year: "2026", title: "Truth Lens goes live", description: "Our first in-house product: a news verifier that checks stories segment by segment, natively in English and Hindi." },
+  { year: "2026", title: "First client website", description: "We take on the Lotus Avio official website, handling its maintenance, security and content updates." },
+  { year: "Next", title: "Beyond reality", description: "We plan to grow our portfolio of AI reels, songs, ad films and stories, and build more products of our own." },
 ];
 
 export const values: Value[] = [
@@ -631,7 +622,7 @@ export const values: Value[] = [
 
 export const culture = {
   intro:
-    "We're a small, curious team of filmmakers, musicians, designers and engineers. We work remotely and in studio, ship fast, and share everything we learn.",
+    "We're a young startup, launched in 2026, and a small, curious team at heart. We work remotely and in studio, ship fast, and share everything we learn as we grow.",
   points: [
     { title: "Friday playtime", description: "Every Friday afternoon is for experiments: new models, wild ideas, no client brief." },
     { title: "Credit where it's due", description: "Everyone who touches a project is named on it. Great work has many authors." },
